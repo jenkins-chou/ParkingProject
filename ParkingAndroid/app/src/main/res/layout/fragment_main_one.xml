@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <!--<View-->
+    <!--android:id="@+id/fake_statusbar_view"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="@dimen/statusbar_view_height" />-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:padding="@dimen/margin_15"
+        android:layout_height="48dp">
+        <TextView
+            android:id="@+id/title"
+            android:text="PARKING STATION"
+            android:textStyle="bold"
+            android:textColor="@color/base_font_color"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:background="@drawable/fragment_one_header_tipbar_bg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textSize="12sp"
+                android:text="你还没有完成登录，暂时无法使用停车场功能"
+                android:layout_centerVertical="true"
+                android:textColor="@color/white"
+                android:layout_margin="@dimen/margin_15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_alignParentRight="true"
+                android:text="去登录"
+                android:layout_centerVertical="true"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"
+                android:textColor="@color/white"
+                android:background="@drawable/fragment_main_one_tipbar_btn"
+                android:layout_margin="@dimen/margin_15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/get_parking"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/fragment_main_one_button"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@mipmap/icon_aircraft" />
+
+            <TextView
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/main_color_light"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="去停车" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

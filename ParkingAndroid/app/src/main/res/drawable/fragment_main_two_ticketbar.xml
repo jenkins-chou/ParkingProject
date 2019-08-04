@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/fragment_two_ticket_start" /><!--填充颜色-->
+    <corners android:topLeftRadius="0dp"
+        android:topRightRadius="0dp"
+        android:bottomRightRadius="10dp"
+        android:bottomLeftRadius="10dp"/><!--圆角-->
+    <stroke android:width="0dp" android:color="#00000000" /><!--边框的颜色-->
+    <gradient
+        android:angle="0"
+        android:startColor="@color/fragment_two_ticket_start"
+        android:endColor="@color/fragment_two_ticket_end" />
+</shape>

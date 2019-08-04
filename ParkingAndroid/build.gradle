@@ -3,10 +3,17 @@
 buildscript {
     
     repositories {
-        google()
-        jcenter()
         //maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
         maven { url "https://dl.google.com/dl/android/maven2/" }
+        google()
+        jcenter()
+        mavenCentral()
+        maven { url "https://jitpack.io" }
+        maven {url  "http://dl.bintray.com/laobie/maven"}
+        maven {
+            url 'https://maven.google.com/'
+            name 'Google'
+        }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.1.2'
@@ -19,10 +26,17 @@ buildscript {
 
 allprojects {
     repositories {
-        google()
-        jcenter()
         //maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
         maven { url "https://dl.google.com/dl/android/maven2/" }
+        google()
+        jcenter()
+        mavenCentral()
+        maven { url "https://jitpack.io" }
+        maven {url  "http://dl.bintray.com/laobie/maven"}
+        maven {
+            url 'https://maven.google.com/'
+            name 'Google'
+        }
     }
 }
 

@@ -10,10 +10,37 @@ Target Server Type    : MYSQL
 Target Server Version : 50725
 File Encoding         : 65001
 
-Date: 2019-08-04 23:46:56
+Date: 2019-08-05 23:22:28
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for car
+-- ----------------------------
+DROP TABLE IF EXISTS `car`;
+CREATE TABLE `car` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) DEFAULT NULL,
+  `car_number` varchar(255) DEFAULT NULL,
+  `type` varchar(255) DEFAULT NULL,
+  `owner` varchar(255) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `property` varchar(255) DEFAULT NULL,
+  `brand` varchar(255) DEFAULT NULL,
+  `model` varchar(255) DEFAULT NULL,
+  `car_code` varchar(255) DEFAULT NULL,
+  `engine_number` varchar(255) DEFAULT NULL,
+  `register_time` varchar(255) DEFAULT NULL,
+  `grant_date` varchar(255) DEFAULT NULL,
+  `remark` varchar(255) DEFAULT NULL,
+  `del` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of car
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for message

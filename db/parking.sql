@@ -10,10 +10,50 @@ Target Server Type    : MYSQL
 Target Server Version : 50725
 File Encoding         : 65001
 
-Date: 2019-08-05 23:22:28
+Date: 2019-08-06 23:16:06
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for account
+-- ----------------------------
+DROP TABLE IF EXISTS `account`;
+CREATE TABLE `account` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(255) DEFAULT NULL,
+  `balance` double DEFAULT NULL,
+  `create_time` varchar(255) DEFAULT NULL,
+  `update_time` varchar(255) DEFAULT NULL,
+  `remark` varchar(255) DEFAULT NULL,
+  `del` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of account
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for account_recharge
+-- ----------------------------
+DROP TABLE IF EXISTS `account_recharge`;
+CREATE TABLE `account_recharge` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) DEFAULT NULL,
+  `source` varchar(255) DEFAULT NULL,
+  `money` double(255,0) DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
+  `detail` varchar(255) DEFAULT NULL,
+  `create_time` varchar(255) DEFAULT NULL,
+  `remark` varchar(255) DEFAULT NULL,
+  `del` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of account_recharge
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for car
@@ -43,6 +83,97 @@ CREATE TABLE `car` (
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for consume_record
+-- ----------------------------
+DROP TABLE IF EXISTS `consume_record`;
+CREATE TABLE `consume_record` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `money` varchar(255) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
+  `duration` varchar(255) DEFAULT NULL,
+  `detail` varchar(255) DEFAULT NULL,
+  `create_time` varchar(255) DEFAULT NULL,
+  `remark` varchar(255) DEFAULT NULL,
+  `del` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of consume_record
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for coupon_base
+-- ----------------------------
+DROP TABLE IF EXISTS `coupon_base`;
+CREATE TABLE `coupon_base` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `coupon_name` varchar(255) DEFAULT NULL,
+  `coupon_publisher` varchar(255) DEFAULT NULL,
+  `deduction` varchar(255) DEFAULT NULL,
+  `discount` double(255,0) DEFAULT NULL,
+  `money` double(255,0) DEFAULT NULL,
+  `deadline` varchar(255) DEFAULT NULL,
+  `type` varchar(255) DEFAULT NULL,
+  `quota` varchar(255) DEFAULT NULL COMMENT '数量上限',
+  `create_time` varchar(255) DEFAULT NULL,
+  `remark` varchar(255) DEFAULT NULL,
+  `del` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of coupon_base
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for coupon_user
+-- ----------------------------
+DROP TABLE IF EXISTS `coupon_user`;
+CREATE TABLE `coupon_user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) DEFAULT NULL,
+  `coupon_id` int(11) DEFAULT NULL,
+  `create_time` varchar(255) DEFAULT NULL,
+  `remark` varchar(255) DEFAULT NULL,
+  `del` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of coupon_user
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for driver
+-- ----------------------------
+DROP TABLE IF EXISTS `driver`;
+CREATE TABLE `driver` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `sex` varchar(255) DEFAULT NULL,
+  `birthday` varchar(255) DEFAULT NULL,
+  `nation` varchar(255) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `idcard` varchar(255) DEFAULT NULL,
+  `photo` varchar(255) DEFAULT NULL,
+  `award_time` varchar(255) DEFAULT NULL,
+  `validity` varchar(255) DEFAULT NULL,
+  `awrad_unit` varchar(255) DEFAULT NULL,
+  `number` varchar(255) DEFAULT NULL,
+  `create_time` varchar(255) DEFAULT NULL,
+  `remark` varchar(255) DEFAULT NULL,
+  `del` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of driver
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for message
 -- ----------------------------
 DROP TABLE IF EXISTS `message`;
@@ -66,6 +197,29 @@ CREATE TABLE `message` (
 -- ----------------------------
 INSERT INTO `message` VALUES ('3', '8', 'teacher', '何生', '13413608888', '5', 'student', '请完善你的班级信息', '1553568918', null, 'normal');
 INSERT INTO `message` VALUES ('4', '5', 'student', '周宁', '123456', '8', 'teacher', '好的老师', '1553570950', null, 'delete');
+
+-- ----------------------------
+-- Table structure for parking_lot
+-- ----------------------------
+DROP TABLE IF EXISTS `parking_lot`;
+CREATE TABLE `parking_lot` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `parking_name` varchar(255) DEFAULT NULL,
+  `parking_address` varchar(255) DEFAULT NULL,
+  `parking_num` varchar(255) DEFAULT NULL,
+  `parking_price` double DEFAULT NULL,
+  `longitude` varchar(255) DEFAULT NULL,
+  `detail` varchar(255) DEFAULT NULL,
+  `img` varchar(255) DEFAULT NULL,
+  `create_time` varchar(255) DEFAULT NULL,
+  `remark` varchar(255) DEFAULT NULL,
+  `del` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of parking_lot
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for user_base

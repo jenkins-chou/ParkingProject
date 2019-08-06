@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 
 
+
 import java.util.Map;
 
 import org.beetl.core.GroupTemplate;
@@ -13,6 +14,15 @@ import org.beetl.ext.jfinal3.JFinal3BeetlRenderFactory;
 import com.demo.controller.ManagerController;
 import com.demo.controller.UserController;
 import com.demo.index.IndexController;
+import com.demo.models.AccountModel;
+import com.demo.models.AccountRechargeModel;
+import com.demo.models.CarModel;
+import com.demo.models.ConsumeRecordModel;
+import com.demo.models.CouponBaseModel;
+import com.demo.models.CouponUserModel;
+import com.demo.models.DriverModel;
+import com.demo.models.MessageModel;
+import com.demo.models.ParkingLotModel;
 import com.demo.models.UserModel;
 import com.jfinal.config.Constants;
 import com.jfinal.config.Handlers;
@@ -60,6 +70,15 @@ public class DemoConfig extends JFinalConfig {
 		
 		ActiveRecordPlugin arp = new ActiveRecordPlugin(c3p0Plugin);
 		me.add(arp);
+		arp.addMapping("account", AccountModel.class);
+		arp.addMapping("account_recharge", AccountRechargeModel.class);
+		arp.addMapping("car", CarModel.class);
+		arp.addMapping("consume_record", ConsumeRecordModel.class);
+		arp.addMapping("coupon_base", CouponBaseModel.class);
+		arp.addMapping("coupon_user", CouponUserModel.class);
+		arp.addMapping("driver", DriverModel.class);
+		arp.addMapping("message", MessageModel.class);
+		arp.addMapping("parking_lot", ParkingLotModel.class);
 		arp.addMapping("user_base", UserModel.class);
 	}
 	

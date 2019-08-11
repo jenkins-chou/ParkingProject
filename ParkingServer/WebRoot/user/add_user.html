@@ -159,7 +159,7 @@
 		
 		<div class="layui-form-item">
 			<div class="layui-input-block">
-				<button class="layui-btn" lay-submit="" lay-filter="add_know_comprehensive">立即提交</button>
+				<button class="layui-btn" lay-submit="" lay-filter="submit_btn">立即提交</button>
 				<button type="reset" class="layui-btn layui-btn-primary">重置</button>
 			</div>
 		</div>
@@ -167,6 +167,6 @@
 	</form>
 	<script type="text/javascript" src="${ctx}/layui/layui.js"></script>
 	<script type="text/javascript" id="addjs"
-		src="${ctx}/user/add_user.js?ctx=${ctx}&&id=${id!''}"></script>
+		src="${ctx}/user/add_user.js?ctx=${ctx}&&id=${id!''}&&html_key=${html_key!''}"></script>
 </body>
 </html>

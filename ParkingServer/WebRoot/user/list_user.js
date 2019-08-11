@@ -40,10 +40,11 @@ var loadList = function(first) {layui.config({base : "js/"}).use([ 'form', 'laye
 						}
 						var upload = layui.upload;
 						var ctxPath = getUParam("ctx", "listjs");
+						var html_key = getUParam("html_key", "listjs");
 						// 第一个实例
 						table.render({
 							elem : '#list',
-							url : ctxPath + '/user/getAllUser' // 数据接口
+							url : ctxPath + '/'+html_key+'/getAllEntity' // 数据接口
 							,
 							cols : [ [ // 表头
 							{
@@ -100,7 +101,7 @@ var loadList = function(first) {layui.config({base : "js/"}).use([ 'form', 'laye
 							var idDatas="id="+data.id;
 							if (obj.event === 'del') {
 								layer.confirm('你确认删除这条数据吗?', function(index) {
-									$.getJSON(ctxPath + "/user/deleteUser",
+									$.getJSON(ctxPath + "/"+html_key+"/deleteEntity",
 											idDatas, function(jsondata) {
 												if (jsondata.code == '200') {
 													layer.msg('删除数据成功', {
@@ -131,7 +132,7 @@ var loadList = function(first) {layui.config({base : "js/"}).use([ 'form', 'laye
 									fixed : true,
 									move : true,
 									content : [
-											ctxPath + '/user/showHtmlModify?id='
+											ctxPath + '/'+html_key+'/showHtmlModify?id='
 													+ data.id, 'yes' ],
 									end : function() {
 									}
@@ -165,7 +166,7 @@ var loadList = function(first) {layui.config({base : "js/"}).use([ 'form', 'laye
 									title : "添加",
 									type : 2,
 									area : [ '100%', '100%' ],
-									content : ctxPath + "/user/showHtmlAdd"
+									content : ctxPath + "/"+html_key+"/showHtmlAdd"
 								});
 							},
 							reload : function() {
@@ -202,7 +203,7 @@ var loadList = function(first) {layui.config({base : "js/"}).use([ 'form', 'laye
 													function(index) {
 														$.getJSON(
 																		ctxPath
-																				+ "/user/deleteSelectUser",
+																				+ "/"+html_key+"/deleteSelectEntity",
 																		idDatas,
 																		function(
 																				jsondata) {

@@ -10,6 +10,8 @@ public class Const {
 	public static final String KEY_RES_CODE_201 = "201";
 	public static final String KEY_RES_CODE_500 = "500";
 	
+	public static final String KEY_HTML = "html_key";
+	
 	public static final String KEY_DB_ID = "id";
 	public static final String KEY_DB_DEL = "del";
 	public static final String KEY_DB_CREATE_TIME = "create_time";

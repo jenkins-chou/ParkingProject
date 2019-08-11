@@ -19,16 +19,17 @@ layui
 					
 					var ctxPath = getUParam("ctx", "addjs");
 					var id = getUParam("id", "addjs");
+					var html_key = getUParam("html_key", "addjs");
 					console.log(id);
 					// 监听提交
-					form.on('submit(add_know_comprehensive)', function(data) {
+					form.on('submit(submit_btn)', function(data) {
 						parent.resetSwClose(true);
 						layer.msg('正在保存。。。', {time : 1000},function(){});
 						var url="";
 						if(id!=null&&id!='')
-							url=ctxPath+"/user/updateUser";
+							url=ctxPath+"/"+html_key+"/updateEntity";
 						else
-							url=ctxPath+"/user/addUser";
+							url=ctxPath+"/"+html_key+"/addEntity";
 						$.getJSON(url, data.field,
 								function(data) {
 									console.log(data+"");
@@ -48,7 +49,7 @@ layui
 					});
 					//获取信息
 					if(id!=null&&id!=''){
-						$.getJSON(ctxPath+"/user/getUserById","id="+id,function(jsondata){
+						$.getJSON(ctxPath+"/"+html_key+"/getEntityById","id="+id,function(jsondata){
 					  		if(jsondata.code=='200'){
 					  		   console.log(JSON.stringify(jsondata.rd));
 					  		  //表单初始赋值

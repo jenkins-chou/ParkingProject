@@ -43,7 +43,7 @@
 	<img src="${ctx}/upload/{{d.pic}}" width="100px" height="70px"></img>
 	</script>
 	<script type="text/javascript" id="listjs"
-		src="${ctx}/message/list_message.js?ctx=${ctx}"></script>
+		src="${ctx}/${html_key}/list.js?ctx=${ctx}&&html_key=${html_key}"></script>
 		
 	<script>
 	layui.use('upload', function(){
@@ -67,10 +67,6 @@
 
 	</script>
 	<script>
-	function abc(){
-		window.location.href = "${ctx}/know_comprehensive/exportData";
-	}
-
 	</script>
 </body>
 </html>

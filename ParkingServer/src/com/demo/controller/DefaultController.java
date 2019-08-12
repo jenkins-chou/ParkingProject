@@ -1,8 +1,10 @@
 package com.demo.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.demo.interfaces.ControllerInterface;
 import com.demo.models.UserModel;
 import com.demo.utils.Const;
+import com.demo.utils.Log;
 import com.demo.utils.PageJson;
 import com.demo.utils.ParamUtil;
 import com.demo.utils.RecordJson;
@@ -14,27 +16,35 @@ import com.jfinal.plugin.activerecord.Page;
 
 public abstract class DefaultController<T extends Model> extends Controller {
 
-	public abstract T getDao();
-	public abstract Class<T> getModelClass();
-	public abstract String getTableName();
-	public abstract String getHtmlKey();
+	public ControllerInterface controllerInterface;
+	
+//	public void setControllerInterface(ControllerInterface controllerInterface){
+//		this.controllerInterface = controllerInterface;
+//	}
+	public Class<T> modelClass;
+	public String tableName;
+	public String htmlKey;
+	public T entityDao;
 	
 	public void getEntityById(){
-		T model = (T) getDao().findById(getPara(Const.KEY_DB_ID));
+		setData();
+		T model = (T) entityDao.findById(getPara(Const.KEY_DB_ID));
 		renderJson(JsonKit.toJson(new RecordJson(Const.KEY_RES_CODE_200, Const.OPTION_SUCCESS, model)));
 	}
 	
-	public void getAllUser() {
+	public void getAllEntity() {
+		setData();
 		ParamUtil param = new ParamUtil(getRequest());
-		Page<T> page = getDao().paginate(param.getPageNumber(),
-				param.getPageSize(), "select * ", "from "+getTableName()+" where del != 'delete'");
+		Page<T> page = entityDao.paginate(param.getPageNumber(),
+				param.getPageSize(), "select * ", "from "+tableName+" where del != 'delete'");
 		System.out.println(page.getList().toString());
 		renderJson(JsonKit.toJson(new PageJson<T>("0", "", page)));
 	}
 	
 	public void addEntity(){
+		setData();
 		try {
-			T model = getModel(getModelClass(), "", true);
+			T model = (T) getModel(modelClass, "", true);
 			model.set(Const.KEY_DB_CREATE_TIME, System.currentTimeMillis()/1000+"");
 			System.out.println("model:"+model);
 			model.save();
@@ -53,8 +63,9 @@ public abstract class DefaultController<T extends Model> extends Controller {
 
 	
 	public void deleteEntity(){
+		setData();
 		try {
-			T model = getModel(getModelClass(), "", true);
+			T model = (T) getModel(modelClass, "", true);
 			model.set(Const.KEY_DB_DEL, Const.OPTION_DB_DELETE);
 			model.update();
 			JSONObject js = new JSONObject();
@@ -70,10 +81,11 @@ public abstract class DefaultController<T extends Model> extends Controller {
 	}
 	
 	public void deleteSelectEntity(){
+		setData();
 		try {
 			String[] ids = getParaValues(Const.KEY_DB_ID);
 			for (String id : ids) {
-				T model = (T) getDao().findById(id);
+				T model = (T) entityDao.findById(id);
 				model.set(Const.KEY_DB_DEL, Const.OPTION_DB_DELETE);
 				model.update();
 			}
@@ -86,8 +98,9 @@ public abstract class DefaultController<T extends Model> extends Controller {
 	
 	//更新接口
 	public void updateEntity(){
+		setData();
 		try {
-			T model = getModel(getModelClass(), "", true);
+			T model = (T) getModel(modelClass, "", true);
 			System.out.println(model.toJson());
 			model.update();
 			JSONObject js = new JSONObject();
@@ -103,20 +116,29 @@ public abstract class DefaultController<T extends Model> extends Controller {
 	
 	//显示列表
 	public void showHtmlList() {
-		setAttr(Const.KEY_HTML, getHtmlKey());
-		render("list_"+getHtmlKey()+".html");
+		setData();
+		Log.i("htmlKey:"+htmlKey);
+		setAttr(Const.KEY_HTML, htmlKey);
+		render("list.html");
 	}
 	
 	//显示添加页
 	public void showHtmlAdd() {
-		setAttr(Const.KEY_HTML, getHtmlKey());
-		render("add_"+getHtmlKey()+".html");
+		setData();
+		Log.i("htmlKey:"+htmlKey);
+		setAttr(Const.KEY_HTML, htmlKey);
+		render("add.html");
 	}
 	
 	//显示修改页
 	public void showHtmlModify() {
-		setAttr(Const.KEY_HTML, getHtmlKey());
+		setData();
+		Log.i("htmlKey:"+htmlKey);
+		setAttr(Const.KEY_HTML, htmlKey);
 		setAttr(Const.KEY_DB_ID, getPara(Const.KEY_DB_ID));
-		render("add_"+getHtmlKey()+".html");
+		render("add.html");
+	}
+	
+	public void setData() {
 	}
 }

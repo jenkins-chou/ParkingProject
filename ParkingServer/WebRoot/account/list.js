@@ -40,10 +40,11 @@ var loadList = function(first) {layui.config({base : "js/"}).use([ 'form', 'laye
 						}
 						var upload = layui.upload;
 						var ctxPath = getUParam("ctx", "listjs");
+						var html_key = getUParam("html_key", "listjs");
 						// 第一个实例
 						table.render({
 							elem : '#list',
-							url : ctxPath + '/message/getAllMessage' // 数据接口
+							url : ctxPath + '/'+html_key+'/getAllEntity' // 数据接口
 							,
 							cols : [ [ // 表头
 							{
@@ -54,38 +55,7 @@ var loadList = function(first) {layui.config({base : "js/"}).use([ 'form', 'laye
 								title : 'ID',
 								sort : true,
 								fixed : 'left'
-							}, {
-								field : 'send_user_id',
-								title : '发送方id'
 							},{
-								field : 'send_user_type',
-								title : '发送方类型'
-							}
-							,{
-								field : 'send_user_name',
-								title : '发送方名称'
-							}
-							,{
-								field : 'send_user_contract',
-								title : '发送方联系方式'
-							}
-							,{
-								field : 'receive_user_id',
-								title : '接收者id'
-							}
-							,{
-								field : 'receive_user_type',
-								title : '接收者类型'
-							}
-							,{
-								field : 'message',
-								title : '消息内容'
-							}
-							,{
-								field : 'remark',
-								title : '备注'
-							}
-							, {
 								fixed : 'right',
 								title : '操作',
 								width : 160,
@@ -104,7 +74,7 @@ var loadList = function(first) {layui.config({base : "js/"}).use([ 'form', 'laye
 							var idDatas="id="+data.id;
 							if (obj.event === 'del') {
 								layer.confirm('你确认删除这条数据吗?', function(index) {
-									$.getJSON(ctxPath + "/message/deleteMessage",
+									$.getJSON(ctxPath + "/"+html_key+"/deleteEntity",
 											idDatas, function(jsondata) {
 												if (jsondata.code == '200') {
 													layer.msg('删除数据成功', {
@@ -135,7 +105,7 @@ var loadList = function(first) {layui.config({base : "js/"}).use([ 'form', 'laye
 									fixed : true,
 									move : true,
 									content : [
-											ctxPath + '/message/showHtmlModify?id='
+											ctxPath + '/'+html_key+'/showHtmlModify?id='
 													+ data.id, 'yes' ],
 									end : function() {
 									}
@@ -169,7 +139,7 @@ var loadList = function(first) {layui.config({base : "js/"}).use([ 'form', 'laye
 									title : "添加",
 									type : 2,
 									area : [ '100%', '100%' ],
-									content : ctxPath + "/message/showHtmlAdd"
+									content : ctxPath + "/"+html_key+"/showHtmlAdd"
 								});
 							},
 							reload : function() {
@@ -206,7 +176,7 @@ var loadList = function(first) {layui.config({base : "js/"}).use([ 'form', 'laye
 													function(index) {
 														$.getJSON(
 																		ctxPath
-																				+ "/message/deleteSelectMessage",
+																				+ "/"+html_key+"/deleteSelectEntity",
 																		idDatas,
 																		function(
 																				jsondata) {

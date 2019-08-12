@@ -2,7 +2,6 @@ package com.demo.controller;
 
 import java.util.List;
 
-import com.demo.models.EnterpriseModel;
 import com.demo.models.UserModel;
 import com.jfinal.core.Controller;
 

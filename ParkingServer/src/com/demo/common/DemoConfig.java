@@ -10,8 +10,16 @@ import java.util.Map;
 import org.beetl.core.GroupTemplate;
 import org.beetl.ext.jfinal3.JFinal3BeetlRenderFactory;
 
-
+import com.demo.controller.AccountController;
+import com.demo.controller.AccountRechargeController;
+import com.demo.controller.CarController;
+import com.demo.controller.ConsumeRecordController;
+import com.demo.controller.CouponBaseController;
+import com.demo.controller.CouponUserController;
+import com.demo.controller.DriverController;
 import com.demo.controller.ManagerController;
+import com.demo.controller.MessageController;
+import com.demo.controller.ParkingLotController;
 import com.demo.controller.UserController;
 import com.demo.index.IndexController;
 import com.demo.models.AccountModel;
@@ -62,6 +70,15 @@ public class DemoConfig extends JFinalConfig {
 		me.add("/", IndexController.class);	
 		me.add("/manager", ManagerController.class);	
 		me.add("/user", UserController.class);
+		me.add("/account", AccountController.class);
+		me.add("/account_recharge", AccountRechargeController.class);
+		me.add("/car", CarController.class);
+		me.add("/consume_record", ConsumeRecordController.class);
+		me.add("/coupon_base", CouponBaseController.class);
+		me.add("/coupon_user", CouponUserController.class);
+		me.add("/driver", DriverController.class);
+		me.add("/message", MessageController.class);
+		me.add("/parking_lot", ParkingLotController.class);
 	}
 	 
 	public void configPlugin(Plugins me) {

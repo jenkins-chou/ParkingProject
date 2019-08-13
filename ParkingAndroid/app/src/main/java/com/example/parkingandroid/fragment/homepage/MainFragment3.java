@@ -26,6 +26,17 @@ public class MainFragment3 extends BaseFragment {
     void user_bar(){
         if (!AccountTool.isLogin(context)){
             IntentManager.intentToLogin(context);
+        }else{
+            IntentManager.intentToUserinfoSetting(context);
+        }
+    }
+
+    @OnClick({R.id.user_avatar})
+    void setAvatar(){
+        if (!AccountTool.isLogin(context)){
+            IntentManager.intentToLogin(context);
+        }else{
+            IntentManager.intentToUserinfoAvatar(context);
         }
     }
 

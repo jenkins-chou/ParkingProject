@@ -6,5 +6,5 @@ package com.example.parkingandroid.api;
 
 public class BaseAPI {
     public static String base_url = "http://192.168.3.3:8007/";//
-    public static String base_upload_url = base_url + "upload/uploadImg";//
+    public static String base_upload_url = base_url + "upload/uploadFileMobile";//
 }

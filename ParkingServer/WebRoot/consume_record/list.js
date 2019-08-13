@@ -51,8 +51,28 @@ var loadList = function(first) {layui.config({base : "js/"}).use([ 'form', 'laye
 								type : 'checkbox',
 								fixed : 'left'
 							}, {
-								field : 'id',
-								title : 'ID',
+								field : 'user_id',
+								title : 'userID',
+								sort : true,
+								fixed : 'left'
+							}, {
+								field : 'money',
+								title : '充值金额',
+								sort : true,
+								fixed : 'left'
+							}, {
+								field : 'status',
+								title : '状态',
+								sort : true,
+								fixed : 'left'
+							}, {
+								field : 'duration',
+								title : 'duration',
+								sort : true,
+								fixed : 'left'
+							}, {
+								field : 'detail',
+								title : '消费说明',
 								sort : true,
 								fixed : 'left'
 							},{

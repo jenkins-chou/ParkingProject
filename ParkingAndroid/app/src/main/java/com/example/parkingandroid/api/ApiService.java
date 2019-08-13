@@ -31,10 +31,10 @@ public interface ApiService {
     Observable<ResultModel<UserModel>> addUser(@FieldMap Map<String, String> body);
 
     @FormUrlEncoded
-    @POST("user/deleteUser")
+    @POST("user/deleteEntity")
     Observable<ResultModel<UserModel>> deleteUser(@FieldMap Map<String, String> body);
 
     @FormUrlEncoded
-    @POST("user/updateUser")
+    @POST("user/updateEntity")
     Observable<ResultModel<UserModel>> updateUser(@FieldMap Map<String, String> body);
 }

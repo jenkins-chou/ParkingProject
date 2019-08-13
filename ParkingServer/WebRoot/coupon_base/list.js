@@ -51,8 +51,38 @@ var loadList = function(first) {layui.config({base : "js/"}).use([ 'form', 'laye
 								type : 'checkbox',
 								fixed : 'left'
 							}, {
-								field : 'id',
-								title : 'ID',
+								field : 'coupon_name',
+								title : '优惠券名称',
+								sort : true,
+								fixed : 'left'
+							}, {
+								field : 'coupon_publisher',
+								title : '优惠券发布者',
+								sort : true,
+								fixed : 'left'
+							}, {
+								field : 'deduction',
+								title : '抵扣金额',
+								sort : true,
+								fixed : 'left'
+							}, {
+								field : 'discount',
+								title : '折扣',
+								sort : true,
+								fixed : 'left'
+							}, {
+								field : 'money',
+								title : '购买金额',
+								sort : true,
+								fixed : 'left'
+							}, {
+								field : 'type',
+								title : '类型',
+								sort : true,
+								fixed : 'left'
+							}, {
+								field : 'quota',
+								title : '数量上限',
 								sort : true,
 								fixed : 'left'
 							},{

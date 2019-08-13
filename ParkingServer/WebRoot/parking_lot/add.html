@@ -17,10 +17,66 @@
 <body class="childrenBody">
 	<form class="layui-form" lay-filter="formtable">
 		<div class="layui-form-item">
-			<label class="layui-form-label">id</label>
+			<label class="layui-form-label">停车场名称</label>
 			<div class="layui-input-block">
-				<input type="text" name="id" class="layui-input"
-					lay-verify="required" placeholder="请输入用户名（必填，用作登录使用）">
+				<input type="text" name="parking_name" class="layui-input"
+					lay-verify="required" placeholder="请输入">
+			</div>
+		</div>
+		
+		<div class="layui-form-item">
+			<label class="layui-form-label">停车场地址</label>
+			<div class="layui-input-block">
+				<input type="text" name="parking_address" class="layui-input"
+					lay-verify="required" placeholder="请输入">
+			</div>
+		</div>
+		
+		<div class="layui-form-item">
+			<label class="layui-form-label">停车场数量</label>
+			<div class="layui-input-block">
+				<input type="text" name="parking_num" class="layui-input"
+					lay-verify="required" placeholder="请输入">
+			</div>
+		</div>
+		
+		<div class="layui-form-item">
+			<label class="layui-form-label">停车场价格</label>
+			<div class="layui-input-block">
+				<input type="text" name="parking_price" class="layui-input"
+					lay-verify="required" placeholder="请输入">
+			</div>
+		</div>
+		
+		<div class="layui-form-item">
+			<label class="layui-form-label">经度</label>
+			<div class="layui-input-block">
+				<input type="text" name="longitude" class="layui-input"
+					lay-verify="required" placeholder="请输入">
+			</div>
+		</div>
+		
+		<div class="layui-form-item">
+			<label class="layui-form-label">维度</label>
+			<div class="layui-input-block">
+				<input type="text" name="latitude" class="layui-input"
+					lay-verify="required" placeholder="请输入">
+			</div>
+		</div>
+		
+		<div class="layui-form-item">
+			<label class="layui-form-label">详细</label>
+			<div class="layui-input-block">
+				<input type="text" name="detail" class="layui-input"
+					placeholder="请输入">
+			</div>
+		</div>
+		
+		<div class="layui-form-item">
+			<label class="layui-form-label">停车场图片</label>
+			<div class="layui-input-block">
+				<input type="text" name="img" class="layui-input"
+					placeholder="请输入">
 			</div>
 		</div>
 		
@@ -31,6 +87,7 @@
 					placeholder="请输入">
 			</div>
 		</div>
+		
 		<input type="hidden" name="del" value="normal"> 
 		
 		<div class="layui-form-item">

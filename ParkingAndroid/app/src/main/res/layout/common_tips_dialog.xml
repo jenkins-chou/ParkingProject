@@ -16,7 +16,7 @@
             android:layout_margin="10dp"
             android:text="提示"
             android:textSize="16sp"
-            android:textColor="#006cb7"
+            android:textColor="@color/main_color"
             android:textStyle="bold" />
 
         <ImageView
@@ -75,7 +75,7 @@
             android:id="@+id/confirm"
             android:text="确定"
             android:background="@drawable/common_tips_dialog_confirm"
-            android:textColor="#006cb7"
+            android:textColor="@color/main_color"
             android:textStyle="bold"
             android:layout_weight="1"
             android:gravity="center"

@@ -51,8 +51,13 @@ var loadList = function(first) {layui.config({base : "js/"}).use([ 'form', 'laye
 								type : 'checkbox',
 								fixed : 'left'
 							}, {
-								field : 'id',
-								title : 'ID',
+								field : 'user_id',
+								title : 'user_id',
+								sort : true,
+								fixed : 'left'
+							}, {
+								field : 'coupon_id',
+								title : 'coupon_id',
 								sort : true,
 								fixed : 'left'
 							},{

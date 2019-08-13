@@ -51,8 +51,58 @@ var loadList = function(first) {layui.config({base : "js/"}).use([ 'form', 'laye
 								type : 'checkbox',
 								fixed : 'left'
 							}, {
-								field : 'id',
-								title : 'ID',
+								field : 'user_id',
+								title : 'userID',
+								sort : true,
+								fixed : 'left'
+							}, {
+								field : 'car_number',
+								title : '汽车号牌',
+								sort : true,
+								fixed : 'left'
+							}, {
+								field : 'type',
+								title : '类型',
+								sort : true,
+								fixed : 'left'
+							}, {
+								field : 'owner',
+								title : '所有者姓名',
+								sort : true,
+								fixed : 'left'
+							}, {
+								field : 'address',
+								title : '注册地址',
+								sort : true,
+								fixed : 'left'
+							}, {
+								field : 'property',
+								title : '属性',
+								sort : true,
+								fixed : 'left'
+							}, {
+								field : 'brand',
+								title : '品牌',
+								sort : true,
+								fixed : 'left'
+							}, {
+								field : 'model',
+								title : '系列',
+								sort : true,
+								fixed : 'left'
+							}, {
+								field : 'engine_number',
+								title : '发动机号码',
+								sort : true,
+								fixed : 'left'
+							}, {
+								field : 'register_time',
+								title : '注册日期',
+								sort : true,
+								fixed : 'left'
+							}, {
+								field : 'grant_date',
+								title : '批准日期',
 								sort : true,
 								fixed : 'left'
 							},{

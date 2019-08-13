@@ -33,12 +33,14 @@ public class UserController extends DefaultController<UserModel>{
 	}
 	
 	public void uploadFileMobile(){
+		
 		UploadFile f = getFile();
 		renderJson("upload/"+f.getFileName());
 		
 	}
 	
 	public void loginMobile() {
+		setData();
 		String useridentify = getPara("useridentify");
 		String pass = getPara("pass");
 		List<UserModel> userModels = entityDao.find("select * from "+DB_TABLE+" where useridentify = '"+useridentify+"' and pass = '"+pass+"' and del != 'delete'");
@@ -54,6 +56,7 @@ public class UserController extends DefaultController<UserModel>{
 	}
 	
 	public void registerMobile() {
+		setData();
 		String useridentify = getPara("useridentify");
 		String pass = getPara("pass");
 		Log.i(useridentify);

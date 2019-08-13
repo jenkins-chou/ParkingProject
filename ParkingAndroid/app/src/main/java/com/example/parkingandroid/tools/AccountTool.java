@@ -41,6 +41,21 @@ public class AccountTool {
         return userModel;
     }
 
+    public final static void reSaveUser(Context context,UserModel tempModel){
+        UserModel localModel = getLoginUser(context);
+        if (tempModel != null && localModel != null){
+            localModel.name = tempModel.name;
+            localModel.sex = tempModel.sex;
+            localModel.nation = tempModel.nation;
+            localModel.age = tempModel.age;
+            localModel.email = tempModel.email;
+            localModel.phone = tempModel.phone;
+            localModel.realname = tempModel.realname;
+            localModel.slogan = tempModel.slogan;
+            saveUser(context,localModel);
+        }
+    }
+
     //退出登录
     public final static void logout(Context context){
         if (context==null)return;

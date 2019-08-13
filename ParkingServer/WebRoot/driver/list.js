@@ -51,8 +51,43 @@ var loadList = function(first) {layui.config({base : "js/"}).use([ 'form', 'laye
 								type : 'checkbox',
 								fixed : 'left'
 							}, {
-								field : 'id',
-								title : 'ID',
+								field : 'user_id',
+								title : 'userID',
+								sort : true,
+								fixed : 'left'
+							}, {
+								field : 'name',
+								title : '姓名',
+								sort : true,
+								fixed : 'left'
+							}, {
+								field : 'sex',
+								title : '性别',
+								sort : true,
+								fixed : 'left'
+							}, {
+								field : 'nation',
+								title : '地区',
+								sort : true,
+								fixed : 'left'
+							}, {
+								field : 'address',
+								title : '详细地址',
+								sort : true,
+								fixed : 'left'
+							}, {
+								field : 'idcard',
+								title : '身份证号码',
+								sort : true,
+								fixed : 'left'
+							}, {
+								field : 'photo',
+								title : '证件照片',
+								sort : true,
+								fixed : 'left'
+							}, {
+								field : 'award_time',
+								title : '颁发时间',
 								sort : true,
 								fixed : 'left'
 							},{

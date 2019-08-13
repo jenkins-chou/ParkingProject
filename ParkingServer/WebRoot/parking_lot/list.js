@@ -55,6 +55,46 @@ var loadList = function(first) {layui.config({base : "js/"}).use([ 'form', 'laye
 								title : 'ID',
 								sort : true,
 								fixed : 'left'
+							}, {
+								field : 'parking_name',
+								title : '停车场名称',
+								sort : true,
+								fixed : 'left'
+							}, {
+								field : 'parking_address',
+								title : '停车场地址',
+								sort : true,
+								fixed : 'left'
+							}, {
+								field : 'parking_num',
+								title : '停车场数量',
+								sort : true,
+								fixed : 'left'
+							}, {
+								field : 'parking_price',
+								title : '停车场价格',
+								sort : true,
+								fixed : 'left'
+							}, {
+								field : 'longitude',
+								title : '经度',
+								sort : true,
+								fixed : 'left'
+							}, {
+								field : 'latitude',
+								title : '维度',
+								sort : true,
+								fixed : 'left'
+							}, {
+								field : 'detail',
+								title : '详细',
+								sort : true,
+								fixed : 'left'
+							}, {
+								field : '停车场图片',
+								title : '详细',
+								sort : true,
+								fixed : 'left'
 							},{
 								fixed : 'right',
 								title : '操作',

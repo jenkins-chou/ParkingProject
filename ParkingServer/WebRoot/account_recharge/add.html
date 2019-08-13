@@ -17,10 +17,42 @@
 <body class="childrenBody">
 	<form class="layui-form" lay-filter="formtable">
 		<div class="layui-form-item">
-			<label class="layui-form-label">id</label>
+			<label class="layui-form-label">user_id</label>
 			<div class="layui-input-block">
-				<input type="text" name="id" class="layui-input"
-					lay-verify="required" placeholder="请输入用户名（必填，用作登录使用）">
+				<input type="text" name="user_id" class="layui-input"
+					lay-verify="required" placeholder="用户id">
+			</div>
+		</div>
+		
+		<div class="layui-form-item">
+			<label class="layui-form-label">充值源</label>
+			<div class="layui-input-block">
+				<input type="text" name="source" class="layui-input"
+					lay-verify="required" placeholder="充值源">
+			</div>
+		</div>
+		
+		<div class="layui-form-item">
+			<label class="layui-form-label">充值金额</label>
+			<div class="layui-input-block">
+				<input type="text" name="money" class="layui-input"
+					lay-verify="required" placeholder="充值金额">
+			</div>
+		</div>
+		
+		<div class="layui-form-item">
+			<label class="layui-form-label">状态</label>
+			<div class="layui-input-block">
+				<input type="text" name="status" class="layui-input"
+					lay-verify="required" placeholder="状态">
+			</div>
+		</div>
+		
+		<div class="layui-form-item">
+			<label class="layui-form-label">充值说明</label>
+			<div class="layui-input-block">
+				<input type="text" name="detail" class="layui-input"
+					lay-verify="required" placeholder="充值说明">
 			</div>
 		</div>
 		

@@ -20,6 +20,7 @@ import com.demo.controller.DriverController;
 import com.demo.controller.ManagerController;
 import com.demo.controller.MessageController;
 import com.demo.controller.ParkingLotController;
+import com.demo.controller.UploadController;
 import com.demo.controller.UserController;
 import com.demo.index.IndexController;
 import com.demo.models.AccountModel;
@@ -68,6 +69,7 @@ public class DemoConfig extends JFinalConfig {
 	
 	public void configRoute(Routes me) {
 		me.add("/", IndexController.class);	
+		me.add("/upload", UploadController.class);
 		me.add("/manager", ManagerController.class);	
 		me.add("/user", UserController.class);
 		me.add("/account", AccountController.class);

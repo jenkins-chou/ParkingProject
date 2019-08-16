@@ -1,7 +1,9 @@
 package com.example.parkingandroid.api;
 
 import com.example.parkingandroid.models.base.ResultModel;
+import com.example.parkingandroid.models.business.CouponModel;
 import com.example.parkingandroid.models.business.UserModel;
+import com.example.parkingandroid.models.business.account.BalanceAndCoupon;
 
 import java.util.Map;
 
@@ -17,7 +19,6 @@ import retrofit2.http.POST;
 public interface ApiService {
 
     //模板接口
-
     @FormUrlEncoded
     @POST("user/login")
     Observable<ResultModel> template(@FieldMap Map<String, String> body);
@@ -37,4 +38,18 @@ public interface ApiService {
     @FormUrlEncoded
     @POST("user/updateEntity")
     Observable<ResultModel<UserModel>> updateUser(@FieldMap Map<String, String> body);
+
+    //account
+    @FormUrlEncoded
+    @POST("account/getBalanceAndCoupon")
+    Observable<ResultModel<BalanceAndCoupon>> getBalanceAndCoupon(@FieldMap Map<String, String> body);
+
+    //获取用户所有银行卡
+    @FormUrlEncoded
+    @POST("bankcard/getAllEntityByUserId")
+    Observable<ResultModel<BalanceAndCoupon>> getBankCard(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("coupon_user/getAllEntityByUserId")
+    Observable<ResultModel<CouponModel>> getCouponListByUserId(@FieldMap Map<String, String> body);
 }

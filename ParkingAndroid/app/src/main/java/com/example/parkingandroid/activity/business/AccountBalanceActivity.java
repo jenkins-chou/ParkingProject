@@ -1,17 +1,16 @@
-package com.example.parkingandroid.fragment.homepage;
+package com.example.parkingandroid.activity.business;
 
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
-import android.widget.RelativeLayout;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.parkingandroid.R;
+import com.example.parkingandroid.activity.base.BaseEmptyActivity;
 import com.example.parkingandroid.api.RS;
-import com.example.parkingandroid.fragment.business.BaseFragment;
+import com.example.parkingandroid.dialog.CommonTipsDialog;
 import com.example.parkingandroid.intent.IntentManager;
 import com.example.parkingandroid.models.base.ResultModel;
-import com.example.parkingandroid.models.business.UserModel;
 import com.example.parkingandroid.models.business.account.BalanceAndCoupon;
 import com.example.parkingandroid.presenter.AccountPresenter;
 import com.example.parkingandroid.tools.AccountTool;
@@ -23,67 +22,33 @@ import java.util.Map;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class MainFragment2 extends BaseFragment {
+public class AccountBalanceActivity extends BaseEmptyActivity implements View.OnClickListener {
 
-    @BindView(R.id.balance)
+    //@BindView(R.id.balance)
     TextView balance;
-    @BindView(R.id.coupon)
-    TextView coupon;
-
-    @BindView(R.id.login_tips_content)
-    RelativeLayout loginTipsContent;
-
-
-
+    Button goto_recharge;
     AccountPresenter accountPresenter;
 
-    @OnClick(R.id.balance_bar)
-    void balance_bar(){
-        if (AccountTool.isLogin(context)){
-            IntentManager.intentToBalance(context);
-        }
-    }
-
-    @OnClick(R.id.coupon_bar)
-    void coupon_bar(){
-        if (AccountTool.isLogin(context)){
-            IntentManager.intentToCouponListUser(context);
-        }
-    }
-    @OnClick(R.id.login_btn)
-    void goLogin(){
-        IntentManager.intentToLogin(context);
+    @Override
+    protected int setContentRes() {
+        return R.layout.activity_account_balance;
     }
 
     @Override
-    protected int getLayoutRes() {
-        return R.layout.fragment_main_two;
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        initAccountView();
-    }
-
-    private void initAccountView(){
-        if (AccountTool.isLogin(context)){
-            UserModel userModel = AccountTool.getLoginUser(context);
-            if (userModel!=null){
-                loginTipsContent.setVisibility(View.GONE);
-                getBalanceAndCoupon();
-            }
-        }else{
-            loginTipsContent.setVisibility(View.VISIBLE);
-        }
-    }
-
-
-
-    @Override
-    protected void initData() {
+    public void initData() {
         super.initData();
+        setTitle("");//去除标题
         initPresenter();
+
+        balance = findViewById(R.id.balance);
+        goto_recharge = findViewById(R.id.goto_recharge);
+        goto_recharge.setOnClickListener(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getBalanceAndCoupon();
     }
 
     private void initPresenter(){
@@ -102,7 +67,6 @@ public class MainFragment2 extends BaseFragment {
                         BalanceAndCoupon balanceAndCoupon = new Gson().fromJson(resultModel.getModelJson(),BalanceAndCoupon.class);
                         if (balanceAndCoupon != null){
                             balance.setText(balanceAndCoupon.getBalance());
-                            coupon.setText(balanceAndCoupon.getCoupon());
                         }
                     }
                 }
@@ -121,6 +85,7 @@ public class MainFragment2 extends BaseFragment {
     }
 
     private void getBalanceAndCoupon(){
+        if (accountPresenter ==null)return;
         resetBalanceAndCoupon();
         Map<String,String> params = RS.getBaseParams(context);
         params.put("user_id",AccountTool.getLoginUser(context).getId());
@@ -129,6 +94,10 @@ public class MainFragment2 extends BaseFragment {
 
     private void resetBalanceAndCoupon(){
         balance.setText("");
-        coupon.setText("");
+    }
+
+    @Override
+    public void onClick(View v) {
+        IntentManager.intentToRecharge(context);
     }
 }

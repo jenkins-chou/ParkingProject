@@ -43,6 +43,10 @@
         <activity android:name=".activity.business.SettingActivity"/>
         <activity android:name=".activity.business.UserinfoSettingActivity"/>
         <activity android:name=".activity.business.UserInfoAvatarActivity"/>
+        <activity android:name=".activity.business.CouponListUserActivity"/>
+        <activity android:name=".activity.business.AccountBalanceActivity"/>
+        <activity android:name=".activity.business.RechargeActivity"/>
+        <activity android:name=".activity.business.BindBankCardActivity"/>
     </application>
 
 </manifest>

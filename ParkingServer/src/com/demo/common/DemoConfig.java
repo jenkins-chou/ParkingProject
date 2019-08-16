@@ -12,6 +12,7 @@ import org.beetl.ext.jfinal3.JFinal3BeetlRenderFactory;
 
 import com.demo.controller.AccountController;
 import com.demo.controller.AccountRechargeController;
+import com.demo.controller.BankCardController;
 import com.demo.controller.CarController;
 import com.demo.controller.ConsumeRecordController;
 import com.demo.controller.CouponBaseController;
@@ -25,6 +26,7 @@ import com.demo.controller.UserController;
 import com.demo.index.IndexController;
 import com.demo.models.AccountModel;
 import com.demo.models.AccountRechargeModel;
+import com.demo.models.BankCardModel;
 import com.demo.models.CarModel;
 import com.demo.models.ConsumeRecordModel;
 import com.demo.models.CouponBaseModel;
@@ -81,6 +83,7 @@ public class DemoConfig extends JFinalConfig {
 		me.add("/driver", DriverController.class);
 		me.add("/message", MessageController.class);
 		me.add("/parking_lot", ParkingLotController.class);
+		me.add("/bankcard", BankCardController.class);
 	}
 	 
 	public void configPlugin(Plugins me) {
@@ -99,6 +102,7 @@ public class DemoConfig extends JFinalConfig {
 		arp.addMapping("message", MessageModel.class);
 		arp.addMapping("parking_lot", ParkingLotModel.class);
 		arp.addMapping("user_base", UserModel.class);
+		arp.addMapping("bankcard", BankCardModel.class);
 	}
 	
 	public void configInterceptor(Interceptors me) {

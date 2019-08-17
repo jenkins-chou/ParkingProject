@@ -50,6 +50,21 @@ public class MainFragment2 extends BaseFragment {
             IntentManager.intentToCouponListUser(context);
         }
     }
+
+    @OnClick(R.id.consume_record)
+    void consume_record(){
+        if (AccountTool.isLogin(context)){
+            IntentManager.intentToConsumeRecord(context);
+        }
+    }
+
+    @OnClick(R.id.coupon_store)
+    void coupon_store(){
+        if (AccountTool.isLogin(context)){
+            IntentManager.intentToCouponStore(context);
+        }
+    }
+
     @OnClick(R.id.login_btn)
     void goLogin(){
         IntentManager.intentToLogin(context);
@@ -109,7 +124,12 @@ public class MainFragment2 extends BaseFragment {
             }
 
             @Override
-            public void getBankCard(boolean isSuccess, Object object) {
+            public void recharge(boolean isSuccess, Object object) {
+
+            }
+
+            @Override
+            public void getRechargeRecord(boolean isSuccess, Object object) {
 
             }
 

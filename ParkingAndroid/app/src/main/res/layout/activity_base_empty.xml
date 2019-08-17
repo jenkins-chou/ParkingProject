@@ -43,6 +43,17 @@
             android:text="Title"
             android:textColor="@color/main_color"
             android:textSize="@dimen/header_title_textsize" />
+        <TextView
+            android:id="@+id/right_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="设置"
+            android:visibility="gone"
+            android:layout_marginRight="10dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/main_color"
+            android:textSize="@dimen/header_title_textsize" />
 
         <View
             android:layout_alignParentBottom="true"

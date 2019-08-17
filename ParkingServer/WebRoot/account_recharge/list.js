@@ -56,7 +56,7 @@ var loadList = function(first) {layui.config({base : "js/"}).use([ 'form', 'laye
 								sort : true,
 								fixed : 'left'
 							}, {
-								field : 'source',
+								field : 'bankcard_id',
 								title : '充值源',
 								sort : true,
 								fixed : 'left'

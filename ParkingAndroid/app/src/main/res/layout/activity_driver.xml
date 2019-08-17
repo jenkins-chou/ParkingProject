@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="点击选择驾驶证件"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/base_font_color2"
+        android:textStyle="bold" />
+    <ImageView
+        android:src="@mipmap/icon_card"
+        android:id="@+id/photo"
+        android:background="@color/white"
+        android:layout_margin="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:text="证件编号"
+            android:textColor="@color/base_font_color2"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/common_noline_edittext"
+            android:hint="请输入"
+            android:padding="5dp"
+            android:singleLine="true"
+            android:textSize="16dp" />
+    </LinearLayout>
+    <View
+        android:background="@color/base_line_color"
+        android:layout_width="match_parent"
+        android:layout_height="1px"/>
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:text="颁发时间"
+            android:textColor="@color/base_font_color2"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/award_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/common_noline_edittext"
+            android:hint="请输入"
+            android:padding="5dp"
+            android:singleLine="true"
+            android:textSize="16dp" />
+    </LinearLayout>
+    <View
+        android:background="@color/base_line_color"
+        android:layout_width="match_parent"
+        android:layout_height="1px"/>
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:text="有效期"
+            android:textColor="@color/base_font_color2"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/validity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/common_noline_edittext"
+            android:hint="请输入"
+            android:padding="5dp"
+            android:singleLine="true"
+            android:textSize="16dp" />
+    </LinearLayout>
+    <View
+        android:background="@color/base_line_color"
+        android:layout_width="match_parent"
+        android:layout_height="1px"/>
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:text="颁发单位"
+            android:textColor="@color/base_font_color2"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/awrad_unit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/common_noline_edittext"
+            android:hint="请输入"
+            android:padding="5dp"
+            android:singleLine="true"
+            android:textSize="16dp" />
+    </LinearLayout>
+    <View
+        android:background="@color/base_line_color"
+        android:layout_width="match_parent"
+        android:layout_height="1px"/>
+    <Button
+        android:id="@+id/btn"
+        android:text="更新"
+        android:layout_margin="20dp"
+        android:textColor="@color/white"
+        android:background="@drawable/common_base_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>

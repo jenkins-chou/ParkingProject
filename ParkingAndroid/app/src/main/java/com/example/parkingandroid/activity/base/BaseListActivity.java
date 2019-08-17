@@ -134,7 +134,7 @@ public abstract class BaseListActivity<T> extends BaseActivity{
     }
 
     protected void convertData(BaseViewHolder helper, Object item){
-        helper.setText(R.id.title,item.toString());
+        //helper.setText(R.id.title,item.toString());
     }
 
     protected void backAction(){

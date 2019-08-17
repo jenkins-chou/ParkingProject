@@ -47,6 +47,11 @@
         <activity android:name=".activity.business.AccountBalanceActivity"/>
         <activity android:name=".activity.business.RechargeActivity"/>
         <activity android:name=".activity.business.BindBankCardActivity"/>
+        <activity android:name=".activity.business.RechargeRecordActivity"/>
+        <activity android:name=".activity.business.CarActivity"/>
+        <activity android:name=".activity.business.DriverActivity"/>
+        <activity android:name=".activity.business.CouponStoreActivity"/>
+        <activity android:name=".activity.business.ConsumeRecordActivity"/>
     </application>
 
 </manifest>

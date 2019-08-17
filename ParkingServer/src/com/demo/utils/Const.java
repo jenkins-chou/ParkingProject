@@ -17,6 +17,7 @@ public class Const {
 	public static final String KEY_DB_USER_ID = "user_id";
 	public static final String KEY_DB_DEL = "del";
 	public static final String KEY_DB_CREATE_TIME = "create_time";
+	public static final String KEY_DB_UPDATE_TIME = "update_time";
 	public static final String KEY_DB_remark = "remark";
 	
 	public static final String OPTION_DB_NORMAL = "normal";

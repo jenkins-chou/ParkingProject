@@ -8,12 +8,16 @@ import com.demo.models.CarModel;
 import com.demo.models.CouponBaseModel;
 import com.demo.models.CouponUserModel;
 import com.demo.models.UserModel;
+import com.demo.utils.CheckUtils;
 import com.demo.utils.Const;
 import com.demo.utils.Log;
 import com.demo.utils.PageJson;
 import com.demo.utils.ParamUtil;
+import com.demo.utils.StringUtil;
 import com.jfinal.kit.JsonKit;
 import com.jfinal.plugin.activerecord.Page;
+
+import cn.jiguang.common.utils.StringUtils;
 
 public class CouponUserController extends DefaultController<CouponUserModel>{
 	public static final String DB_TABLE = "coupon_user";//修改项 1：数据库表名称
@@ -25,6 +29,43 @@ public class CouponUserController extends DefaultController<CouponUserModel>{
 		tableName = DB_TABLE;
 		htmlKey = HTML_KEY;
 		entityDao = CouponUserModel.dao;
+	}
+	
+	public void buyCoupon(){
+		String user_id = getPara(Const.KEY_DB_USER_ID);
+		String coupon_money = getPara("coupon_money");
+		String coupon_id = getPara("coupon_id");
+		
+		List<AccountModel> accountModels = AccountModel.dao.find("select * from account where user_id = '"+user_id+"' and del != 'delete'");
+		if(CheckUtils.checkArrayIsNotNull(accountModels)){
+			AccountModel accountModel = accountModels.get(0);
+			if(StringUtil.isNumber(coupon_money)){
+				double preBalance = accountModel.getDouble("balance");
+				double couponMoneyDouble = Double.parseDouble(coupon_money);
+				if(preBalance>couponMoneyDouble){
+					accountModel.set("balance", preBalance-couponMoneyDouble);
+					accountModel.update();
+					addEntity();
+				}else{
+					JSONObject js = new JSONObject();
+					js.put(Const.KEY_RES_CODE, Const.KEY_RES_CODE_201);
+					js.put(Const.KEY_RES_MESSAGE, "余额不足0");
+					renderJson(js.toJSONString());
+				}
+			}else{
+				JSONObject js = new JSONObject();
+				js.put(Const.KEY_RES_CODE, Const.KEY_RES_CODE_201);
+				js.put(Const.KEY_RES_MESSAGE, "余额不足1");
+				renderJson(js.toJSONString());
+			}
+			
+		}else{
+			JSONObject js = new JSONObject();
+			js.put(Const.KEY_RES_CODE, Const.KEY_RES_CODE_201);
+			js.put(Const.KEY_RES_MESSAGE, "余额不足2");
+			renderJson(js.toJSONString());
+		}
+		
 	}
 	
 	public void getAllEntityByUserId() {

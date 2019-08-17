@@ -5,9 +5,14 @@ import android.content.Intent;
 
 import com.example.parkingandroid.activity.business.AccountBalanceActivity;
 import com.example.parkingandroid.activity.business.BindBankCardActivity;
+import com.example.parkingandroid.activity.business.CarActivity;
+import com.example.parkingandroid.activity.business.ConsumeRecordActivity;
 import com.example.parkingandroid.activity.business.CouponListUserActivity;
+import com.example.parkingandroid.activity.business.CouponStoreActivity;
+import com.example.parkingandroid.activity.business.DriverActivity;
 import com.example.parkingandroid.activity.business.LoginActivity;
 import com.example.parkingandroid.activity.business.RechargeActivity;
+import com.example.parkingandroid.activity.business.RechargeRecordActivity;
 import com.example.parkingandroid.activity.business.SettingActivity;
 import com.example.parkingandroid.activity.business.UserInfoAvatarActivity;
 import com.example.parkingandroid.activity.business.UserinfoSettingActivity;
@@ -82,6 +87,51 @@ public class IntentManager {
      */
     public static void intentToBindBankcard(Context context){
         Intent intent = new Intent(context,BindBankCardActivity.class);
+        context.startActivity(intent);
+    }
+
+    /**
+     * 跳转到充值记录界面
+     * @param context
+     */
+    public static void intentToRechargeRecord(Context context){
+        Intent intent = new Intent(context,RechargeRecordActivity.class);
+        context.startActivity(intent);
+    }
+
+    /**
+     * 跳转到车主信息界面
+     * @param context
+     */
+    public static void intentToDriver(Context context){
+        Intent intent = new Intent(context,DriverActivity.class);
+        context.startActivity(intent);
+    }
+
+    /**
+     * 跳转到车主信息界面
+     * @param context
+     */
+    public static void intentToCar(Context context){
+        Intent intent = new Intent(context,CarActivity.class);
+        context.startActivity(intent);
+    }
+
+    /**
+     * 跳转到消费记录
+     * @param context
+     */
+    public static void intentToConsumeRecord(Context context){
+        Intent intent = new Intent(context,ConsumeRecordActivity.class);
+        context.startActivity(intent);
+    }
+
+    /**
+     * 跳转到优惠券商店
+     * @param context
+     */
+    public static void intentToCouponStore(Context context){
+        Intent intent = new Intent(context,CouponStoreActivity.class);
         context.startActivity(intent);
     }
 }

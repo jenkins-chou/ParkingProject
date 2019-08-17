@@ -3,6 +3,7 @@ package com.example.parkingandroid.activity.base;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -28,7 +29,7 @@ public class BaseActivity extends AppCompatActivity {
         setBinder();
         initData();
         initView();
-
+        Log.e("进入",getClass().getCanonicalName()+"");
     }
 
     private void setStatusBarColor() {

@@ -132,24 +132,28 @@
                         android:layout_width="15dp"
                         android:layout_height="15dp" />
                 </RelativeLayout>
+
                 <RelativeLayout
-                    android:background="@drawable/common_button_selected"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:padding="20dp"
+                    android:id="@+id/consume_record"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/common_button_selected"
+                    android:padding="20dp">
+
                     <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:gravity="center"
-                        android:orientation="horizontal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                        android:orientation="horizontal">
+
                         <ImageView
-                            android:src="@mipmap/icon_consume_records"
                             android:layout_width="20dp"
-                            android:layout_height="20dp" />
+                            android:layout_height="20dp"
+                            android:src="@mipmap/icon_consume_records" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -157,14 +161,16 @@
                             android:layout_marginLeft="10dp"
                             android:text="消费记录" />
                     </LinearLayout>
+
                     <ImageView
-                        android:layout_centerVertical="true"
-                        android:layout_alignParentRight="true"
-                        android:src="@mipmap/icon_right_green"
                         android:layout_width="15dp"
-                        android:layout_height="15dp" />
+                        android:layout_height="15dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@mipmap/icon_right_green" />
                 </RelativeLayout>
                 <RelativeLayout
+                    android:id="@+id/coupon_store"
                     android:background="@drawable/common_button_selected"
                     android:layout_marginTop="20dp"
                     android:layout_marginLeft="20dp"
@@ -187,7 +193,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
-                            android:text="红包公告" />
+                            android:text="优惠券商店" />
                     </LinearLayout>
                     <ImageView
                         android:layout_centerVertical="true"

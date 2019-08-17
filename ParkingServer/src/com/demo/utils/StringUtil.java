@@ -17,7 +17,7 @@ public class StringUtil {
     /**
      * 姝ｅ垯琛ㄨ揪寮忥細楠岃瘉鏁板瓧
      */
-    public static final String REGEX_NUMBER = "^[0-9]\\d*$";
+    public static final String REGEX_NUMBER = "^[0-9]\\d*$.";
 
     /**
      * 姝ｅ垯琛ㄨ揪寮忥細楠岃瘉鎵嬫満鍙�

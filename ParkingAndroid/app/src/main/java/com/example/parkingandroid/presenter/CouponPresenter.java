@@ -73,9 +73,87 @@ public class CouponPresenter {
                 });
     }
 
+    //获取商店里所有优惠券
+    public void getAllCouponStoreData(Map<String,String> params){
+        if (params==null)return;
+        Log.e("开始请求","p-->"+params.toString());
+        new ApiUtil(context)
+                .getServer(ApiService.class)
+                //记得更改请求接口数据
+                .getAllCouponStoreData(params)
+                .subscribeOn(Schedulers.io())//后台处理线程
+                .observeOn(AndroidSchedulers.mainThread())//指定回调发生的线程
+                .subscribe(new Observer<ResultModel>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        System.out.print(d);
+                    }
+
+                    @Override
+                    public void onNext(ResultModel resultModel) {
+                        //更新视图
+                        if (onCallBack!=null){
+                            onCallBack.getAllCouponStoreData(true,resultModel);
+                        }
+                    }
+                    @Override
+                    public void onError(Throwable e) {
+                        System.out.print("----error");
+                        e.printStackTrace();
+                        if (onCallBack!=null){
+                            onCallBack.getAllCouponStoreData(false,e);
+                        }
+                        //view.failed(e);
+                    }
+                    @Override
+                    public void onComplete() {
+                    }
+                });
+    }
+
+    //购买优惠券
+    public void buyCoupon(Map<String,String> params){
+        if (params==null)return;
+        Log.e("开始请求","p-->"+params.toString());
+        new ApiUtil(context)
+                .getServer(ApiService.class)
+                //记得更改请求接口数据
+                .buyCoupon(params)
+                .subscribeOn(Schedulers.io())//后台处理线程
+                .observeOn(AndroidSchedulers.mainThread())//指定回调发生的线程
+                .subscribe(new Observer<ResultModel>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        System.out.print(d);
+                    }
+
+                    @Override
+                    public void onNext(ResultModel resultModel) {
+                        //更新视图
+                        if (onCallBack!=null){
+                            onCallBack.buyCoupon(true,resultModel);
+                        }
+                    }
+                    @Override
+                    public void onError(Throwable e) {
+                        System.out.print("----error");
+                        e.printStackTrace();
+                        if (onCallBack!=null){
+                            onCallBack.buyCoupon(false,e);
+                        }
+                        //view.failed(e);
+                    }
+                    @Override
+                    public void onComplete() {
+                    }
+                });
+    }
+
     public interface OnCallBack{
         void callback(boolean isSuccess, Object object);
         void getCouponListByUserId(boolean isSuccess, Object object);
+        void getAllCouponStoreData(boolean isSuccess, Object object);
+        void buyCoupon(boolean isSuccess, Object object);
         void failed(Object object);
     }
 

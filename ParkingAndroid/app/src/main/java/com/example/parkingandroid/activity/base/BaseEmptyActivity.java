@@ -22,6 +22,14 @@ public abstract class BaseEmptyActivity extends BaseActivity {
     @BindView(R.id.title)
     TextView title;
 
+    @BindView(R.id.right_btn)
+    TextView right_btn;
+
+    @OnClick(R.id.right_btn)
+    void right_btn(){
+        onToolbarRightButtonClick();
+    }
+
     @BindView(R.id.container)
     LinearLayout container;
 
@@ -51,5 +59,18 @@ public abstract class BaseEmptyActivity extends BaseActivity {
 
     public void setTitle(int res){
         title.setText(res);
+    }
+
+    /**
+     * toolbar右按钮点击事件
+     */
+    public void onToolbarRightButtonClick(){}
+
+    public void setToolbarRightButtonTitle(String title){
+        right_btn.setText(title);
+    }
+
+    public void setToolbarRightButtonEnable(boolean enable){
+        right_btn.setVisibility(enable?View.VISIBLE:View.GONE);
     }
 }

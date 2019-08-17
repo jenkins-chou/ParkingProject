@@ -27,6 +27,7 @@ public class AccountBalanceActivity extends BaseEmptyActivity implements View.On
     //@BindView(R.id.balance)
     TextView balance;
     Button goto_recharge;
+    Button goto_bankcard;
     AccountPresenter accountPresenter;
 
     @Override
@@ -42,7 +43,23 @@ public class AccountBalanceActivity extends BaseEmptyActivity implements View.On
 
         balance = findViewById(R.id.balance);
         goto_recharge = findViewById(R.id.goto_recharge);
+        goto_bankcard = findViewById(R.id.goto_bankcard);
+
         goto_recharge.setOnClickListener(this);
+        goto_bankcard.setOnClickListener(this);
+    }
+
+    @Override
+    public void initView() {
+        super.initView();
+        setToolbarRightButtonEnable(true);
+        setToolbarRightButtonTitle("充值记录");
+    }
+
+    @Override
+    public void onToolbarRightButtonClick() {
+        super.onToolbarRightButtonClick();
+        IntentManager.intentToRechargeRecord(context);
     }
 
     @Override
@@ -73,7 +90,12 @@ public class AccountBalanceActivity extends BaseEmptyActivity implements View.On
             }
 
             @Override
-            public void getBankCard(boolean isSuccess, Object object) {
+            public void recharge(boolean isSuccess, Object object) {
+
+            }
+
+            @Override
+            public void getRechargeRecord(boolean isSuccess, Object object) {
 
             }
 
@@ -98,6 +120,14 @@ public class AccountBalanceActivity extends BaseEmptyActivity implements View.On
 
     @Override
     public void onClick(View v) {
-        IntentManager.intentToRecharge(context);
+        switch (v.getId()){
+            case R.id.goto_recharge:
+                IntentManager.intentToRecharge(context);
+                break;
+            case R.id.goto_bankcard:
+                IntentManager.intentToBindBankcard(context);
+                break;
+        }
+
     }
 }

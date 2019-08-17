@@ -21,15 +21,4 @@ public class BankCardController extends DefaultController{
 		entityDao = BankCardModel.dao;
 	}
 	
-	public void getAllEntityByUserId() {
-		setData();
-		String sql = "select * from "+DB_TABLE+" where user_id = '"+getPara(Const.KEY_DB_USER_ID)+"' and del != 'delete';";
-		Log.i(sql);
-		List<CouponBaseModel> list = CouponBaseModel.dao.find(sql);
-		JSONObject js = new JSONObject();
-		js.put(Const.KEY_RES_CODE, Const.KEY_RES_CODE_200);
-		js.put(Const.KEY_RES_DATA, list);
-		renderJson(js);
-	}
-	
 }

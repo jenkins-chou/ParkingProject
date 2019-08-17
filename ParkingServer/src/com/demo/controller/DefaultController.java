@@ -1,7 +1,10 @@
 package com.demo.controller;
 
+import java.util.List;
+
 import com.alibaba.fastjson.JSONObject;
 import com.demo.interfaces.ControllerInterface;
+import com.demo.models.CouponBaseModel;
 import com.demo.models.UserModel;
 import com.demo.utils.Const;
 import com.demo.utils.Log;
@@ -41,11 +44,23 @@ public abstract class DefaultController<T extends Model> extends Controller {
 		renderJson(JsonKit.toJson(new PageJson<T>("0", "", page)));
 	}
 	
+	public void getAllEntityByUserId() {
+		setData();
+		String sql = "select * from "+tableName+" where user_id = '"+getPara(Const.KEY_DB_USER_ID)+"' and del != 'delete';";
+		Log.i(sql);
+		List<T> list = entityDao.find(sql);
+		JSONObject js = new JSONObject();
+		js.put(Const.KEY_RES_CODE, Const.KEY_RES_CODE_200);
+		js.put(Const.KEY_RES_DATA, list);
+		renderJson(js);
+	}
+	
 	public void addEntity(){
 		setData();
 		try {
 			T model = (T) getModel(modelClass, "", true);
 			model.set(Const.KEY_DB_CREATE_TIME, System.currentTimeMillis()/1000+"");
+			model.set(Const.KEY_DB_DEL, "normal");
 			System.out.println("model:"+model);
 			model.save();
 			JSONObject js = new JSONObject();

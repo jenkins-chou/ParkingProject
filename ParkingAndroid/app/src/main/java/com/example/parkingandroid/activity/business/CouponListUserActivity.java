@@ -63,6 +63,16 @@ public class CouponListUserActivity extends BaseListActivity<CouponModel> {
             }
 
             @Override
+            public void getAllCouponStoreData(boolean isSuccess, Object object) {
+
+            }
+
+            @Override
+            public void buyCoupon(boolean isSuccess, Object object) {
+
+            }
+
+            @Override
             public void failed(Object object) {
 
             }

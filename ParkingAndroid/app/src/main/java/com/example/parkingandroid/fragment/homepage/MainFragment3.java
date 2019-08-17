@@ -40,9 +40,27 @@ public class MainFragment3 extends BaseFragment {
         }
     }
 
-    @OnClick(R.id.setting)
-    void setting(){
+    @OnClick(R.id.about)
+    void about(){
         IntentManager.intentToSetting(context);
+    }
+
+    @OnClick(R.id.car_bar)
+    void car_bar(){
+        if (!AccountTool.isLogin(context)){
+            IntentManager.intentToLogin(context);
+        }else{
+            IntentManager.intentToCar(context);
+        }
+    }
+
+    @OnClick(R.id.driver_bar)
+    void driver_bar(){
+        if (!AccountTool.isLogin(context)){
+            IntentManager.intentToLogin(context);
+        }else{
+            IntentManager.intentToDriver(context);
+        }
     }
 
     @Override

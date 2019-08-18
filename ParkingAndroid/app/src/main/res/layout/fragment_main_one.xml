@@ -4,10 +4,6 @@
     android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <!--<View-->
-    <!--android:id="@+id/fake_statusbar_view"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="@dimen/statusbar_view_height" />-->
     <RelativeLayout
         android:layout_width="match_parent"
         android:padding="@dimen/margin_15"
@@ -21,11 +17,24 @@
             android:layout_centerVertical="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/refresh_btn"
+            android:layout_marginLeft="15dp"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/icon_refresh"
+            android:layout_width="15dp"
+            android:layout_height="15dp" />
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <com.amap.api.maps.MapView
+            android:id="@+id/map"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </com.amap.api.maps.MapView>
 
         <RelativeLayout
             android:id="@+id/login_tips"
@@ -83,12 +92,12 @@
                 android:src="@mipmap/icon_aircraft" />
 
             <TextView
-                android:textStyle="bold"
-                android:layout_marginLeft="10dp"
-                android:textColor="@color/main_color_light"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="去停车" />
+                android:layout_marginLeft="10dp"
+                android:text="预约停车"
+                android:textColor="@color/main_color_light"
+                android:textStyle="bold" />
         </LinearLayout>
     </RelativeLayout>
 

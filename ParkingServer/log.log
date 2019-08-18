@@ -12325,3 +12325,6 @@ Caused by: com.mysql.jdbc.exceptions.MySQLSyntaxErrorException: You have an erro
 	at com.jfinal.plugin.activerecord.Model.find(Model.java:643)
 	at com.jfinal.plugin.activerecord.Model.find(Model.java:660)
 	... 33 more
+
+2019-08-18 16:50:58
+[WARN]-[Thread: qtp1286084959-23]-[com.jfinal.core.ActionHandler.handle()]: 404 Action Not Found: /map/showIndex

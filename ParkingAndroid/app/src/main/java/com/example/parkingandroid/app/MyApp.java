@@ -4,9 +4,12 @@ import android.app.Application;
 import android.content.Context;
 import android.support.multidex.MultiDex;
 
+import com.example.parkingandroid.api.BaseAPI;
 import com.example.parkingandroid.tools.GlobalExcaption;
 
 import org.xutils.x;
+
+import static com.amap.api.maps.MapsInitializer.setApiKey;
 
 public class MyApp extends Application {
     public static MyApp appOS;
@@ -23,6 +26,7 @@ public class MyApp extends Application {
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
         MultiDex.install(this);
+        setApiKey(BaseAPI.AMAP_KEY);
     }
 
 }

@@ -19,6 +19,7 @@ import com.demo.controller.CouponBaseController;
 import com.demo.controller.CouponUserController;
 import com.demo.controller.DriverController;
 import com.demo.controller.ManagerController;
+import com.demo.controller.MapController;
 import com.demo.controller.MessageController;
 import com.demo.controller.ParkingLotController;
 import com.demo.controller.UploadController;
@@ -33,6 +34,7 @@ import com.demo.models.CouponBaseModel;
 import com.demo.models.CouponUserModel;
 import com.demo.models.DriverModel;
 import com.demo.models.MessageModel;
+import com.demo.models.ParkingLotAppointmentModel;
 import com.demo.models.ParkingLotModel;
 import com.demo.models.UserModel;
 import com.jfinal.config.Constants;
@@ -84,6 +86,8 @@ public class DemoConfig extends JFinalConfig {
 		me.add("/message", MessageController.class);
 		me.add("/parking_lot", ParkingLotController.class);
 		me.add("/bankcard", BankCardController.class);
+		
+		//me.add("/map", MapController.class);
 	}
 	 
 	public void configPlugin(Plugins me) {
@@ -103,6 +107,7 @@ public class DemoConfig extends JFinalConfig {
 		arp.addMapping("parking_lot", ParkingLotModel.class);
 		arp.addMapping("user_base", UserModel.class);
 		arp.addMapping("bankcard", BankCardModel.class);
+		arp.addMapping("parking_lot_appointment", ParkingLotAppointmentModel.class);
 	}
 	
 	public void configInterceptor(Interceptors me) {

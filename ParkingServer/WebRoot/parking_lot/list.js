@@ -91,8 +91,8 @@ var loadList = function(first) {layui.config({base : "js/"}).use([ 'form', 'laye
 								sort : true,
 								fixed : 'left'
 							}, {
-								field : '停车场图片',
-								title : '详细',
+								field : 'img',
+								title : '停车场图片',
 								sort : true,
 								fixed : 'left'
 							},{
@@ -178,7 +178,7 @@ var loadList = function(first) {layui.config({base : "js/"}).use([ 'form', 'laye
 								index = layer.open({
 									title : "添加",
 									type : 2,
-									area : [ '100%', '100%' ],
+									area : [ '800px', '800px' ],
 									content : ctxPath + "/"+html_key+"/showHtmlAdd"
 								});
 							},

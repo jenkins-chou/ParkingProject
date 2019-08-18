@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:src="@mipmap/default_parking_img"
+        android:scaleType="centerCrop"
+        android:layout_width="match_parent"
+        android:layout_height="150dp" />
+    <RelativeLayout
+        android:padding="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/parking_name"
+            android:layout_centerVertical="true"
+            android:textSize="25dp"
+            android:textColor="@color/base_font_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:textColor="@color/base_font_color2"
+            android:id="@+id/parking_num"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" /> `
+    </RelativeLayout>
+    <TextView
+        android:textColor="@color/fragment_two_ticket_start"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:id="@+id/parking_money"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:textColor="@color/main_color_light"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:id="@+id/parking_address"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <RelativeLayout
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="预约"
+            android:layout_centerVertical="true"
+            android:textSize="16dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:alpha="0.7"
+            android:background="@color/main_color_light"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/money"
+            android:text=""
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:textSize="16dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:textColor="@color/fragment_two_ticket_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_margin="20dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/start_time"
+            android:textColor="@color/main_color"
+            android:gravity="center"
+            android:text="开始时间"
+            android:background="@drawable/activity_parking_lot_detail_starttime"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="40dp" />
+        <TextView
+            android:id="@+id/end_time"
+            android:background="@drawable/activity_parking_lot_detail_endtime"
+            android:textColor="@color/fragment_two_ticket_start"
+            android:gravity="center"
+            android:text="结束时间"
+            android:layout_marginLeft="20dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="40dp" />
+    </LinearLayout>
+    <EditText
+        android:id="@+id/number"
+        android:textSize="16dp"
+        android:maxLength="3"
+        android:textStyle="bold"
+        android:paddingLeft="10dp"
+        android:inputType="number"
+        android:hint="请输入预约车位数"
+        android:background="@color/white"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
+
+    <Button
+        android:id="@+id/btn"
+        android:text="预约缴费"
+        android:layout_margin="20dp"
+        android:background="@drawable/common_base_button"
+        android:textColor="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
+</LinearLayout>

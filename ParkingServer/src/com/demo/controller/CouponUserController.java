@@ -5,6 +5,7 @@ import java.util.List;
 import com.alibaba.fastjson.JSONObject;
 import com.demo.models.AccountModel;
 import com.demo.models.CarModel;
+import com.demo.models.ConsumeRecordModel;
 import com.demo.models.CouponBaseModel;
 import com.demo.models.CouponUserModel;
 import com.demo.models.UserModel;
@@ -35,7 +36,10 @@ public class CouponUserController extends DefaultController<CouponUserModel>{
 		String user_id = getPara(Const.KEY_DB_USER_ID);
 		String coupon_money = getPara("coupon_money");
 		String coupon_id = getPara("coupon_id");
-		
+		Log.i(user_id);
+		Log.i(coupon_money);
+		Log.i(coupon_id);
+		Log.i(StringUtil.isNumber(coupon_money)+"");
 		List<AccountModel> accountModels = AccountModel.dao.find("select * from account where user_id = '"+user_id+"' and del != 'delete'");
 		if(CheckUtils.checkArrayIsNotNull(accountModels)){
 			AccountModel accountModel = accountModels.get(0);
@@ -43,6 +47,20 @@ public class CouponUserController extends DefaultController<CouponUserModel>{
 				double preBalance = accountModel.getDouble("balance");
 				double couponMoneyDouble = Double.parseDouble(coupon_money);
 				if(preBalance>couponMoneyDouble){
+					
+					//添加消费记录
+					ConsumeRecordModel consumeModel = new ConsumeRecordModel();
+					consumeModel.set("user_id", user_id);
+					consumeModel.set("money", coupon_money);
+					consumeModel.set("address", "online");
+					consumeModel.set("status", Const.OPTION_SUCCESS);
+					consumeModel.set("duration", "none");
+					consumeModel.set("detail", "优惠券商店线上消费");
+					consumeModel.set("create_time", System.currentTimeMillis()/1000+"");
+					consumeModel.set("remark", "none");
+					consumeModel.set("del", "normal");
+					consumeModel.save();
+					
 					accountModel.set("balance", preBalance-couponMoneyDouble);
 					accountModel.update();
 					addEntity();

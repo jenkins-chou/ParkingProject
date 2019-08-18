@@ -1,0 +1,8 @@
+com.amap.api.maps
+com.amap.api.maps.model
+com.amap.api.maps.model.animation
+com.amap.api.maps.model.particle
+com.amap.api.maps.offlinemap
+com.amap.api.maps.utils
+com.amap.api.maps.utils.overlay
+com.amap.api.trace

@@ -13,6 +13,12 @@
 <link rel="stylesheet" href="${ctx}/layui/css/layui.css" media="all" />
 <link rel="stylesheet" href="${ctx}/css/font_eolqem241z66flxr.css"
 	media="all" />
+	<style>
+		#container{
+				width:800px;
+				height:800px;
+			}
+	</style>
 </head>
 <body class="childrenBody">
 	<form class="layui-form" lay-filter="formtable">
@@ -27,7 +33,7 @@
 		<div class="layui-form-item">
 			<label class="layui-form-label">停车场地址</label>
 			<div class="layui-input-block">
-				<input type="text" name="parking_address" class="layui-input"
+				<input type="text" name="parking_address" id="parking_address" class="layui-input"
 					lay-verify="required" placeholder="请输入">
 			</div>
 		</div>
@@ -51,7 +57,7 @@
 		<div class="layui-form-item">
 			<label class="layui-form-label">经度</label>
 			<div class="layui-input-block">
-				<input type="text" name="longitude" class="layui-input"
+				<input type="text" name="longitude" id="longitude" class="layui-input"
 					lay-verify="required" placeholder="请输入">
 			</div>
 		</div>
@@ -59,7 +65,7 @@
 		<div class="layui-form-item">
 			<label class="layui-form-label">维度</label>
 			<div class="layui-input-block">
-				<input type="text" name="latitude" class="layui-input"
+				<input type="text" name="latitude" id="latitude" class="layui-input"
 					lay-verify="required" placeholder="请输入">
 			</div>
 		</div>
@@ -72,13 +78,13 @@
 			</div>
 		</div>
 		
-		<div class="layui-form-item">
+		<!-- <div class="layui-form-item">
 			<label class="layui-form-label">停车场图片</label>
 			<div class="layui-input-block">
-				<input type="text" name="img" class="layui-input"
-					placeholder="请输入">
+			<input type="hidden" name="img" value="upload/default_parking_img.jpg"></input>
+				<img alt="" src="../upload/default_parking_img.jpg" style="width:100px;height:100px"/>
 			</div>
-		</div>
+		</div> -->
 		
 		<div class="layui-form-item">
 			<label class="layui-form-label">备注</label>
@@ -88,7 +94,11 @@
 			</div>
 		</div>
 		
-		<input type="hidden" name="del" value="normal"> 
+		<input type="hidden" name="del" value="normal">
+		
+		<div id="container">
+			
+		</div>
 		
 		<div class="layui-form-item">
 			<div class="layui-input-block">
@@ -101,5 +111,74 @@
 	<script type="text/javascript" src="${ctx}/layui/layui.js"></script>
 	<script type="text/javascript" id="addjs"
 		src="${ctx}/${html_key}/add.js?ctx=${ctx}&&id=${id!''}&&html_key=${html_key!''}"></script>
+	<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=2c767e8f622316ca8534b8b8c859ad56&plugin=AMap.Geocoder"></script> 
+	<script type="text/javascript">
+		var markers = [];
+		var geocoder;
+		var lat,lng;
+		var lat = document.getElementById("latitude").value;
+    	var lng = document.getElementById("longitude").value;
+    
+    	if(lat == ''){
+    		lat = 22.535015;
+    	}
+    	if(lng == ''){
+    		lng = 114.080585;
+    	}
+    	
+		var map = new AMap.Map('container', {
+	       center:[lng,lat],
+	       zoom:11
+	    });
+		if(!geocoder){
+            geocoder = new AMap.Geocoder({
+                city: "010", //城市设为北京，默认：“全国”
+                radius: 1000 //范围，默认：500
+            });
+        }
+		
+		var count = 0, clickListener;
+	    var _onClick = function(e) {
+	    	
+	    	map.remove(markers);
+	    	marker = new AMap.Marker({
+	            position: e.lnglat,
+	            map: map
+	        })
+	        markers.push(marker);
+	        console.log(e.lnglat);
+	        console.log(count);
+	        lat = e.lnglat.lat;
+	        lng = e.lnglat.lng;
+	        console.log(lat);
+	        console.log(lng);
+	        parking_address
+	        document.getElementById("latitude").value=lat;
+	        document.getElementById("longitude").value=lng;
+	        
+	        geocoder.getAddress(e.lnglat, function(status, result) {
+	            if (status === 'complete'&&result.regeocode) {
+	                var address = result.regeocode.formattedAddress;
+	                console.log(address);
+	                document.getElementById("parking_address").value=address;
+	                //document.getElementById('address').value = address;
+	            }else{
+	                log.error('根据经纬度查询地址失败')
+	            }
+	        });
+	        
+	        map.emit('count', {count: count += 1});//触发自定义事件
+	    }
+	    clickListener = AMap.event.addListener(map, "click", _onClick);//绑定地图事件
+	    
+	    
+    	if(lat != '' && lng != ''){
+    		marker = new AMap.Marker({
+	            position: new AMap.LngLat(lng, lat),
+	            map: map
+	        })
+    		markers.push(marker);
+    	}
+	</script>
 </body>
 </html>

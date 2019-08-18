@@ -23,12 +23,16 @@ public abstract class BaseFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(getLayoutRes(),container,false);
         unbinder = ButterKnife.bind(this,view);
+        initData(savedInstanceState);
         initData();
         return view;
     }
 
     protected abstract int getLayoutRes();
 
+    protected void initData(Bundle savedInstanceState){
+
+    }
     protected void initData(){
         context = this.getContext();
     }

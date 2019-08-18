@@ -32,9 +32,9 @@ public class CouponListUserActivity extends BaseListActivity<CouponModel> {
         //super.convertData(helper, item);
         CouponModel couponModel = (CouponModel)item;
         helper.setText(R.id.coupon_name,couponModel.getCoupon_name());
-        helper.setText(R.id.coupon_money,couponModel.getMoney());
-        helper.setText(R.id.coupon_decution,couponModel.getDeduction());
-        helper.setText(R.id.coupon_deadline,couponModel.getDeadline());
+        helper.setText(R.id.coupon_money,"售价:"+couponModel.getMoney()+"元");
+        helper.setText(R.id.coupon_decution,"价值:"+couponModel.getDeduction()+"元");
+        helper.setText(R.id.coupon_deadline,"截止:"+couponModel.getDeadline());
     }
 
     @Override

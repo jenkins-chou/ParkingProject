@@ -107,4 +107,14 @@ public interface ApiService {
     @FormUrlEncoded
     @POST("car/update")
     Observable<ResultModel<CarModel>> setCar(@FieldMap Map<String, String> body);
+
+    //获取个人消费记录
+    @FormUrlEncoded
+    @POST("consume_record/getAllEntityByUserId")
+    Observable<ResultModel> getConsumeRecord(@FieldMap Map<String, String> body);
+
+    //获取所有停车场
+    @FormUrlEncoded
+    @POST("parking_lot/getAllEntityMobile")
+    Observable<ResultModel> getAllParkingLot(@FieldMap Map<String, String> body);
 }

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style type="text/css">
+			#container{
+				width:800px;
+				height:800px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="container">
+			
+		</div>
+	<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=2c767e8f622316ca8534b8b8c859ad56"></script> 
+	<script type="text/javascript">
+		var markers = [];
+		var lat,lng;
+		var map = new AMap.Map('container', {
+	       center:[117.000923,36.675807],
+	       zoom:11
+	    });
+		
+		var count = 0, clickListener;
+	    var _onClick = function(e) {
+	    	
+	    	map.remove(markers);
+	    	marker = new AMap.Marker({
+	            position: e.lnglat,
+	            map: map
+	        })
+	        markers.push(marker);
+	        console.log(e.lnglat);
+	        console.log(count);
+	        lat = e.lnglat.lat;
+	        lng = e.lnglat.lng;
+	        console.log(lat);
+	        console.log(lng);
+	        map.emit('count', {count: count += 1});//触发自定义事件
+	    }
+	    clickListener = AMap.event.addListener(map, "click", _onClick);//绑定地图事件
+	    
+	    
+	</script>
+	</body>
+</html>

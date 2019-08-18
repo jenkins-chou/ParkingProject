@@ -23,7 +23,7 @@ public class StringUtil {
     /**
      * 正则表达式：验证数字
      */
-    public static final String REGEX_NUMBER = "^[0-9]\\d*$";
+    public static final String REGEX_NUMBER = "([1-9]\\d*\\.?\\d*)|(0\\.\\d*[1-9])";
 
     /**
      * 正则表达式：验证手机号

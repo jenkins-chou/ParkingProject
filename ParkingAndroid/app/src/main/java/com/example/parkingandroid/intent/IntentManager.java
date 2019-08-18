@@ -11,6 +11,8 @@ import com.example.parkingandroid.activity.business.CouponListUserActivity;
 import com.example.parkingandroid.activity.business.CouponStoreActivity;
 import com.example.parkingandroid.activity.business.DriverActivity;
 import com.example.parkingandroid.activity.business.LoginActivity;
+import com.example.parkingandroid.activity.business.ParkingLotDetailActivity;
+import com.example.parkingandroid.activity.business.ParkingLotListActivity;
 import com.example.parkingandroid.activity.business.RechargeActivity;
 import com.example.parkingandroid.activity.business.RechargeRecordActivity;
 import com.example.parkingandroid.activity.business.SettingActivity;
@@ -132,6 +134,25 @@ public class IntentManager {
      */
     public static void intentToCouponStore(Context context){
         Intent intent = new Intent(context,CouponStoreActivity.class);
+        context.startActivity(intent);
+    }
+
+    /**
+     * 跳转到停车场列表
+     * @param context
+     */
+    public static void intentToParkingLotList(Context context){
+        Intent intent = new Intent(context,ParkingLotListActivity.class);
+        context.startActivity(intent);
+    }
+
+    /**
+     * 跳转到停车场详情
+     * @param context
+     */
+    public static void intentToParkingLotDetail(Context context,String key,String value){
+        Intent intent = new Intent(context,ParkingLotDetailActivity.class);
+        intent.putExtra(key,value);
         context.startActivity(intent);
     }
 }

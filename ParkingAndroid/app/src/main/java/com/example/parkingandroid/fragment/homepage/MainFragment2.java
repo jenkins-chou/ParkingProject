@@ -11,13 +11,16 @@ import com.example.parkingandroid.api.RS;
 import com.example.parkingandroid.fragment.business.BaseFragment;
 import com.example.parkingandroid.intent.IntentManager;
 import com.example.parkingandroid.models.base.ResultModel;
+import com.example.parkingandroid.models.business.ParkingLotModel;
 import com.example.parkingandroid.models.business.UserModel;
 import com.example.parkingandroid.models.business.account.BalanceAndCoupon;
 import com.example.parkingandroid.presenter.AccountPresenter;
+import com.example.parkingandroid.presenter.ParkingLotPresenter;
 import com.example.parkingandroid.tools.AccountTool;
 import com.example.parkingandroid.tools.Const;
 import com.google.gson.Gson;
 
+import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
@@ -36,6 +39,7 @@ public class MainFragment2 extends BaseFragment {
 
 
     AccountPresenter accountPresenter;
+
 
     @OnClick(R.id.balance_bar)
     void balance_bar(){

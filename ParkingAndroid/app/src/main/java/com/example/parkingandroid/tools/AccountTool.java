@@ -52,6 +52,7 @@ public class AccountTool {
             localModel.phone = tempModel.phone;
             localModel.realname = tempModel.realname;
             localModel.slogan = tempModel.slogan;
+            localModel.pay_pwd = tempModel.pay_pwd;
             saveUser(context,localModel);
         }
     }

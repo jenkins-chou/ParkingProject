@@ -202,6 +202,40 @@
                         android:layout_width="15dp"
                         android:layout_height="15dp" />
                 </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/appointment_order"
+                    android:background="@drawable/common_button_selected"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:padding="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_centerVertical="true"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:src="@mipmap/icon_order"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="我的预约订单" />
+                    </LinearLayout>
+                    <ImageView
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:src="@mipmap/icon_right_green"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp" />
+                </RelativeLayout>
             </LinearLayout>
 
         </com.example.parkingandroid.ui.DampScrollView>

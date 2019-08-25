@@ -18,6 +18,7 @@ public class UserModel {
     public String address;
     public String health;
     public String type;
+    public String pay_pwd;
     public String create_time;
     public String remark;
     public String del;
@@ -158,6 +159,14 @@ public class UserModel {
         this.type = type;
     }
 
+    public String getPay_pwd() {
+        return pay_pwd;
+    }
+
+    public void setPay_pwd(String pay_pwd) {
+        this.pay_pwd = pay_pwd;
+    }
+
     public String getCreate_time() {
         return create_time;
     }
@@ -203,6 +212,7 @@ public class UserModel {
                 ", address='" + address + '\'' +
                 ", health='" + health + '\'' +
                 ", type='" + type + '\'' +
+                ", pay_pwd='" + pay_pwd + '\'' +
                 ", create_time='" + create_time + '\'' +
                 ", remark='" + remark + '\'' +
                 ", del='" + del + '\'' +

@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.example.parkingandroid.activity.business.AccountBalanceActivity;
+import com.example.parkingandroid.activity.business.AccountPayPwdActivity;
+import com.example.parkingandroid.activity.business.AppointmentOrderActivity;
 import com.example.parkingandroid.activity.business.BindBankCardActivity;
 import com.example.parkingandroid.activity.business.CarActivity;
 import com.example.parkingandroid.activity.business.ConsumeRecordActivity;
@@ -153,6 +155,24 @@ public class IntentManager {
     public static void intentToParkingLotDetail(Context context,String key,String value){
         Intent intent = new Intent(context,ParkingLotDetailActivity.class);
         intent.putExtra(key,value);
+        context.startActivity(intent);
+    }
+
+    /**
+     * 跳转到支付密码设置界面
+     * @param context
+     */
+    public static void intentToAccountPayPwd(Context context){
+        Intent intent = new Intent(context,AccountPayPwdActivity.class);
+        context.startActivity(intent);
+    }
+
+    /**
+     * 跳转到我的预约订单界面
+     * @param context
+     */
+    public static void intentToAppointmentOrder(Context context){
+        Intent intent = new Intent(context,AppointmentOrderActivity.class);
         context.startActivity(intent);
     }
 }

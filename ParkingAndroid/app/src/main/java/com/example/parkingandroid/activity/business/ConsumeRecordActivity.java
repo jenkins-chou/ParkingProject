@@ -39,9 +39,9 @@ public class ConsumeRecordActivity extends BaseListActivity<ConsumeRecordModel> 
 //        super.convertData(helper, item);
         Log.e("ConsumeRecordModel",item.toString()+"");
         ConsumeRecordModel consumeRecordModel = new Gson().fromJson(new Gson().toJson(item),ConsumeRecordModel.class);
-        helper.setText(R.id.address,consumeRecordModel.getAddress());
-        helper.setText(R.id.money,consumeRecordModel.getMoney());
-        helper.setText(R.id.consume_time,StringUtil.getStrTime(consumeRecordModel.getCreate_time(),"yyyy年MM月dd日 HH:mm:ss"));
+        helper.setText(R.id.detail,consumeRecordModel.getDetail());
+        helper.setText(R.id.money,"￥"+consumeRecordModel.getMoney());
+        helper.setText(R.id.consume_time,"消费时间:"+StringUtil.getStrTime(consumeRecordModel.getCreate_time(),"yyyy年MM月dd日 HH:mm:ss"));
     }
 
     @Override
@@ -77,6 +77,7 @@ public class ConsumeRecordActivity extends BaseListActivity<ConsumeRecordModel> 
     @Override
     protected void handleRefreshResult() {
         super.handleRefreshResult();
+        consumeRecordPresenter.getConsumeRecord(RS.getBaseParams(this));
     }
 
     @Override

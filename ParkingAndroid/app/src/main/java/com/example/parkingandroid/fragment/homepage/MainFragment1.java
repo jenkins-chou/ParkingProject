@@ -141,6 +141,11 @@ public class MainFragment1 extends BaseFragment {
             }
 
             @Override
+            public void addAppointment(boolean isSuccess, Object object) {
+
+            }
+
+            @Override
             public void failed(Object object) {
 
             }

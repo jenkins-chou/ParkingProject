@@ -17,11 +17,17 @@ import com.bigkoo.pickerview.listener.OnTimeSelectListener;
 import com.bigkoo.pickerview.view.TimePickerView;
 import com.example.parkingandroid.R;
 import com.example.parkingandroid.activity.base.BaseEmptyActivity;
+import com.example.parkingandroid.api.RS;
+import com.example.parkingandroid.models.base.ResultModel;
 import com.example.parkingandroid.models.business.ParkingLotModel;
+import com.example.parkingandroid.presenter.ParkingLotPresenter;
+import com.example.parkingandroid.tools.Const;
 import com.example.parkingandroid.tools.StringUtil;
 import com.google.gson.Gson;
 
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 import butterknife.OnTextChanged;
 
@@ -43,6 +49,8 @@ public class ParkingLotDetailActivity extends BaseEmptyActivity implements View.
 
     private String startTimeMills;
     private String endTimeMills;
+
+    ParkingLotPresenter parkingLotPresenter;
     @Override
     protected int setContentRes() {
         return R.layout.activity_parking_lot_detail;
@@ -77,6 +85,33 @@ public class ParkingLotDetailActivity extends BaseEmptyActivity implements View.
         btn.setOnClickListener(this);
 
         showParkingLotDetail();
+        initPresenter();
+    }
+
+    void initPresenter(){
+        parkingLotPresenter = new ParkingLotPresenter(context);
+        parkingLotPresenter.setOnCallBack(new ParkingLotPresenter.OnCallBack() {
+            @Override
+            public void getAllParkingLot(boolean isSuccess, Object object) {
+
+            }
+
+            @Override
+            public void addAppointment(boolean isSuccess, Object object) {
+                if (isSuccess && object != null) {
+                    ResultModel resultModel = (ResultModel) object;
+                    if (resultModel != null && TextUtils.equals(resultModel.getCode(), Const.KEY_RES_CODE_200)) {
+                        Toast.makeText(context, "预约成功", Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
+                }
+            }
+
+            @Override
+            public void failed(Object object) {
+
+            }
+        });
     }
 
     void showParkingLotDetail(){
@@ -116,7 +151,7 @@ public class ParkingLotDetailActivity extends BaseEmptyActivity implements View.
                 });
                 break;
             case R.id.btn:
-
+                submitData();
                 break;
         }
     }
@@ -150,9 +185,10 @@ public class ParkingLotDetailActivity extends BaseEmptyActivity implements View.
                 int num = Integer.parseInt(number.getText().toString());
                 Log.e("cacuMoney num",num+"");
                 if (parkingLotModel != null){
-                    money.setText("共"+(hours * Double.parseDouble(parkingLotModel.getParking_price()) * num)+"元");
+                    double lastMoney = hours * Double.parseDouble(parkingLotModel.getParking_price()) * num;
+                    money.setText("共"+lastMoney+"元");
                     Log.e("cacuMoney money",money+"");
-                    return hours * Double.parseDouble(parkingLotModel.getParking_price());
+                    return lastMoney;
                 }
             }
         }
@@ -168,7 +204,16 @@ public class ParkingLotDetailActivity extends BaseEmptyActivity implements View.
         }else if (TextUtils.isEmpty(input)){
             Toast.makeText(context, "请输入车位数量", Toast.LENGTH_SHORT).show();
         }else{
-
+            if (parkingLotModel != null){
+                Map<String,String> params = RS.getBaseParams(this);
+                params.put("parking_id",parkingLotModel.getId());
+                params.put("number",input);
+                params.put("money",cacuMoney()+"");
+                params.put("start_time",startTimeMills);
+                params.put("end_time",endTimeMills);
+                params.put("status","success");
+                parkingLotPresenter.addAppointment(params);
+            }
         }
     }
 

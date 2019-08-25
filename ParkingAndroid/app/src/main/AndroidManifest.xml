@@ -61,6 +61,8 @@
         <activity android:name=".activity.business.ConsumeRecordActivity"/>
         <activity android:name=".activity.business.ParkingLotListActivity"/>
         <activity android:name=".activity.business.ParkingLotDetailActivity"/>
+        <activity android:name=".activity.business.AccountPayPwdActivity"/>
+        <activity android:name=".activity.business.AppointmentOrderActivity"/>
     </application>
 
 </manifest>

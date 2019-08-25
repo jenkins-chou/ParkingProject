@@ -15,9 +15,11 @@ import android.widget.Toast;
 import com.example.parkingandroid.R;
 import com.example.parkingandroid.activity.base.BaseEmptyActivity;
 import com.example.parkingandroid.api.RS;
+import com.example.parkingandroid.dialog.CommonInputDialog;
 import com.example.parkingandroid.dialog.CommonTipsDialog;
 import com.example.parkingandroid.intent.IntentManager;
 import com.example.parkingandroid.models.base.ResultModel;
+import com.example.parkingandroid.models.business.UserModel;
 import com.example.parkingandroid.models.business.account.BalanceAndCoupon;
 import com.example.parkingandroid.models.business.account.BankCardModel;
 import com.example.parkingandroid.presenter.AccountPresenter;
@@ -56,7 +58,14 @@ public class RechargeActivity extends BaseEmptyActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setTitle("余额充值");
         initPresenter();
+        setToolbarRightButtonEnable(true);
+        setToolbarRightButtonTitle("支付密码");
+    }
 
+    @Override
+    public void onToolbarRightButtonClick() {
+        super.onToolbarRightButtonClick();
+        IntentManager.intentToAccountPayPwd(context);
     }
 
     @Override
@@ -182,7 +191,37 @@ public class RechargeActivity extends BaseEmptyActivity implements View.OnClickL
                     if (TextUtils.isEmpty(getInputMoney())){
                         CommonTipsDialog.show(context,"提示","请输入金额",false);
                     }else{
-                        accountPresenter.recharge(getRequestParams());
+                        //开始校验支付密码
+                        UserModel userModel = AccountTool.getLoginUser(RechargeActivity.this);
+                        if (userModel != null){
+                            Log.e("UserModel",userModel.toString());
+                            if (TextUtils.isEmpty(userModel.getPay_pwd()) ||
+                                    TextUtils.equals(userModel.getPay_pwd(),"null")||
+                                    TextUtils.equals(userModel.getPay_pwd(),"NULL")){
+                                CommonTipsDialog.show(context,"温馨提示","您还没有设置支付密码,请点击右上角'支付密码'进行设置",false);
+                            }else{
+                                CommonInputDialog.create(context, "支付密码", "请输入支付密码", false, new CommonInputDialog.OnClickListener() {
+                                    @Override
+                                    public void cancel() {
+
+                                    }
+                                    @Override
+                                    public void getInput(String inputStr) {
+                                        if (userModel != null && TextUtils.equals(userModel.getPay_pwd(),inputStr)){
+                                            //开始充值
+                                            accountPresenter.recharge(getRequestParams());
+                                        }else{
+                                            Toast.makeText(context, "验证失败,请重试", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                }).show();
+                            }
+                        }else{
+                            Toast.makeText(context, "数据出错，请重新登录", Toast.LENGTH_SHORT).show();
+                            finish();
+                        }
+
+
                     }
                 }
                 break;

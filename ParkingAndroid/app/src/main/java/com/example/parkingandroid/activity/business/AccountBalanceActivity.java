@@ -15,8 +15,10 @@ import com.example.parkingandroid.models.business.account.BalanceAndCoupon;
 import com.example.parkingandroid.presenter.AccountPresenter;
 import com.example.parkingandroid.tools.AccountTool;
 import com.example.parkingandroid.tools.Const;
+import com.example.parkingandroid.tools.StringUtil;
 import com.google.gson.Gson;
 
+import java.text.DecimalFormat;
 import java.util.Map;
 
 import butterknife.BindView;
@@ -83,7 +85,13 @@ public class AccountBalanceActivity extends BaseEmptyActivity implements View.On
                     if (resultModel != null && TextUtils.equals(resultModel.getCode(),Const.KEY_RES_CODE_200)){
                         BalanceAndCoupon balanceAndCoupon = new Gson().fromJson(resultModel.getModelJson(),BalanceAndCoupon.class);
                         if (balanceAndCoupon != null){
-                            balance.setText(balanceAndCoupon.getBalance());
+
+                            if (StringUtil.isNumber(balanceAndCoupon.getBalance())){
+                                DecimalFormat df = new DecimalFormat();
+                                df.setMaximumFractionDigits(2);
+                                df.setMinimumFractionDigits(2);
+                                balance.setText(df.format(Double.parseDouble(balanceAndCoupon.getBalance())));//控制两位小数
+                            }
                         }
                     }
                 }

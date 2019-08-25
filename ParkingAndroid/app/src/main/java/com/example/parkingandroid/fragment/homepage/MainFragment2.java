@@ -18,8 +18,10 @@ import com.example.parkingandroid.presenter.AccountPresenter;
 import com.example.parkingandroid.presenter.ParkingLotPresenter;
 import com.example.parkingandroid.tools.AccountTool;
 import com.example.parkingandroid.tools.Const;
+import com.example.parkingandroid.tools.StringUtil;
 import com.google.gson.Gson;
 
+import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Map;
 
@@ -66,6 +68,13 @@ public class MainFragment2 extends BaseFragment {
     void coupon_store(){
         if (AccountTool.isLogin(context)){
             IntentManager.intentToCouponStore(context);
+        }
+    }
+
+    @OnClick(R.id.appointment_order)
+    void appointment_order(){
+        if (AccountTool.isLogin(context)){
+            IntentManager.intentToAppointmentOrder(context);
         }
     }
 
@@ -120,7 +129,12 @@ public class MainFragment2 extends BaseFragment {
                     if (resultModel != null && TextUtils.equals(resultModel.getCode(),Const.KEY_RES_CODE_200)){
                         BalanceAndCoupon balanceAndCoupon = new Gson().fromJson(resultModel.getModelJson(),BalanceAndCoupon.class);
                         if (balanceAndCoupon != null){
-                            balance.setText(balanceAndCoupon.getBalance());
+                            if (StringUtil.isNumber(balanceAndCoupon.getBalance())){
+                                DecimalFormat df = new DecimalFormat();
+                                df.setMaximumFractionDigits(2);
+                                df.setMinimumFractionDigits(2);
+                                balance.setText(df.format(Double.parseDouble(balanceAndCoupon.getBalance())));//控制两位小数
+                            }
                             coupon.setText(balanceAndCoupon.getCoupon());
                         }
                     }

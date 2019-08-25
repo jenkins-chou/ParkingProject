@@ -40,6 +40,7 @@ public class CouponUserController extends DefaultController<CouponUserModel>{
 		Log.i(coupon_money);
 		Log.i(coupon_id);
 		Log.i(StringUtil.isNumber(coupon_money)+"");
+		
 		List<AccountModel> accountModels = AccountModel.dao.find("select * from account where user_id = '"+user_id+"' and del != 'delete'");
 		if(CheckUtils.checkArrayIsNotNull(accountModels)){
 			AccountModel accountModel = accountModels.get(0);

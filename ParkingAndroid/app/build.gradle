@@ -5,7 +5,7 @@ android {
         config_debug {
             keyAlias 'key0'
             keyPassword '123456'
-            storeFile file('D:/github/ParkingProject/release.jks')
+            storeFile file('D:/github/ParkingProject/release.jks')//需要更换为绝对路径
             storePassword '123456'
         }
     }

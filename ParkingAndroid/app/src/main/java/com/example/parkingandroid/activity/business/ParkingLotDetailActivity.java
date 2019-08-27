@@ -2,6 +2,7 @@ package com.example.parkingandroid.activity.business;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.support.annotation.Nullable;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -22,6 +23,7 @@ import com.example.parkingandroid.models.base.ResultModel;
 import com.example.parkingandroid.models.business.ParkingLotModel;
 import com.example.parkingandroid.presenter.ParkingLotPresenter;
 import com.example.parkingandroid.tools.Const;
+import com.example.parkingandroid.tools.RandomCodeGenerator;
 import com.example.parkingandroid.tools.StringUtil;
 import com.google.gson.Gson;
 
@@ -47,8 +49,14 @@ public class ParkingLotDetailActivity extends BaseEmptyActivity implements View.
     EditText number;
     Button btn;
 
+    TextView selectCoupon;
+
     private String startTimeMills;
     private String endTimeMills;
+
+    private String coupon_id;
+    private String coupon_name;
+    private String coupon_deduction;
 
     ParkingLotPresenter parkingLotPresenter;
     @Override
@@ -80,12 +88,30 @@ public class ParkingLotDetailActivity extends BaseEmptyActivity implements View.
         number.addTextChangedListener(this);
         btn = findViewById(R.id.btn);
 
+        selectCoupon = findViewById(R.id.select_coupon);
+
         start_time.setOnClickListener(this);
         end_time.setOnClickListener(this);
         btn.setOnClickListener(this);
+        selectCoupon.setOnClickListener(this);
 
         showParkingLotDetail();
         initPresenter();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (resultCode){
+            case 200:
+                coupon_id = data.getStringExtra("coupon_id");
+                coupon_name = data.getStringExtra("coupon_name");
+                coupon_deduction = data.getStringExtra("coupon_deduction");
+
+                selectCoupon.setText(coupon_name+coupon_deduction);
+                cacuMoney();
+                break;
+        }
     }
 
     void initPresenter(){
@@ -105,6 +131,11 @@ public class ParkingLotDetailActivity extends BaseEmptyActivity implements View.
                         finish();
                     }
                 }
+            }
+
+            @Override
+            public void getAllAppointmentByUserID(boolean isSuccess, Object object) {
+
             }
 
             @Override
@@ -153,6 +184,11 @@ public class ParkingLotDetailActivity extends BaseEmptyActivity implements View.
             case R.id.btn:
                 submitData();
                 break;
+            case R.id.select_coupon:
+                Intent intent = new Intent(context,CouponListUserActivity.class);
+                intent.putExtra("isSelected",true);
+                startActivityForResult(intent,200);
+                break;
         }
     }
 
@@ -186,8 +222,12 @@ public class ParkingLotDetailActivity extends BaseEmptyActivity implements View.
                 Log.e("cacuMoney num",num+"");
                 if (parkingLotModel != null){
                     double lastMoney = hours * Double.parseDouble(parkingLotModel.getParking_price()) * num;
+
+                    if (!TextUtils.isEmpty(coupon_deduction) && StringUtil.isNumber(coupon_deduction)){
+                        lastMoney = lastMoney - Integer.parseInt(coupon_deduction)>0?lastMoney - Integer.parseInt(coupon_deduction):0;
+                    }
                     money.setText("共"+lastMoney+"元");
-                    Log.e("cacuMoney money",money+"");
+                    Log.e("cacuMoney money",lastMoney+"");
                     return lastMoney;
                 }
             }
@@ -211,7 +251,13 @@ public class ParkingLotDetailActivity extends BaseEmptyActivity implements View.
                 params.put("money",cacuMoney()+"");
                 params.put("start_time",startTimeMills);
                 params.put("end_time",endTimeMills);
+                params.put("code",new RandomCodeGenerator(12, 3).generateRandomPassword());
                 params.put("status","success");
+
+                if (!TextUtils.isEmpty(coupon_id)){
+                    params.put("coupon_user_id",coupon_id);
+                }
+
                 parkingLotPresenter.addAppointment(params);
             }
         }

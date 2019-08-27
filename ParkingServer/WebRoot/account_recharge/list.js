@@ -56,11 +56,6 @@ var loadList = function(first) {layui.config({base : "js/"}).use([ 'form', 'laye
 								sort : true,
 								fixed : 'left'
 							}, {
-								field : 'bankcard_id',
-								title : '充值源',
-								sort : true,
-								fixed : 'left'
-							}, {
 								field : 'money',
 								title : '充值金额',
 								sort : true,
@@ -70,12 +65,7 @@ var loadList = function(first) {layui.config({base : "js/"}).use([ 'form', 'laye
 								title : '状态',
 								sort : true,
 								fixed : 'left'
-							}, {
-								field : 'detail',
-								title : '充值详情',
-								sort : true,
-								fixed : 'left'
-							}, {
+							},{
 								field : 'create_time',
 								title : '创建时间',
 								sort : true,

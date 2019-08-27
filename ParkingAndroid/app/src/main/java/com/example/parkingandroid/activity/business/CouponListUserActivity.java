@@ -1,6 +1,8 @@
 package com.example.parkingandroid.activity.business;
 
+import android.content.Intent;
 import android.text.TextUtils;
+import android.view.View;
 
 import com.example.parkingandroid.R;
 import com.example.parkingandroid.activity.base.BaseListActivity;
@@ -19,6 +21,8 @@ import java.util.Map;
 import butterknife.BindView;
 
 public class CouponListUserActivity extends BaseListActivity<CouponModel> {
+
+    private boolean isSelected = false;
 
     CouponPresenter couponPresenter;
     @Override
@@ -41,6 +45,11 @@ public class CouponListUserActivity extends BaseListActivity<CouponModel> {
     public void initData() {
         super.initData();
         setTitle("我的优惠券");
+
+        Intent intent = getIntent();
+        if (intent!=null){
+            isSelected = intent.getBooleanExtra("isSelected",false);
+        }
         couponPresenter = new CouponPresenter(context);
         couponPresenter.setOnCallBack(new CouponPresenter.OnCallBack() {
             @Override
@@ -79,6 +88,21 @@ public class CouponListUserActivity extends BaseListActivity<CouponModel> {
         });
 
         getDataFromNet();
+    }
+
+    @Override
+    public void onBaseItemClick(View view, int position) {
+        super.onBaseItemClick(view, position);
+        if (isSelected){
+            if (getSources() !=null && getSources().get(position) != null){
+                Intent intent = new Intent();
+                intent.putExtra("coupon_id",getSources().get(position).getCoupon_user_id());
+                intent.putExtra("coupon_name",getSources().get(position).getCoupon_name());
+                intent.putExtra("coupon_deduction",getSources().get(position).getDeduction());
+                setResult(200,intent);
+                finish();
+            }
+        }
     }
 
     void getDataFromNet(){

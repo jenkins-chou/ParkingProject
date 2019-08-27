@@ -21,8 +21,8 @@ import com.jfinal.plugin.activerecord.Page;
 import cn.jiguang.common.utils.StringUtils;
 
 public class CouponUserController extends DefaultController<CouponUserModel>{
-	public static final String DB_TABLE = "coupon_user";//ÐÞ¸ÄÏî 1£ºÊý¾Ý¿â±íÃû³Æ
-	public static final String HTML_KEY = "coupon_user";//ÐÞ¸ÄÏî2£ºÒ³Ãæ¹Ø¼ü×Ö
+	public static final String DB_TABLE = "coupon_user";//ï¿½Þ¸ï¿½ï¿½ï¿½ 1ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	public static final String HTML_KEY = "coupon_user";//ï¿½Þ¸ï¿½ï¿½ï¿½2ï¿½ï¿½Ò³ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½
 	
 	@Override
 	public void setData() {
@@ -49,14 +49,13 @@ public class CouponUserController extends DefaultController<CouponUserModel>{
 				double couponMoneyDouble = Double.parseDouble(coupon_money);
 				if(preBalance>couponMoneyDouble){
 					
-					//Ìí¼ÓÏû·Ñ¼ÇÂ¼
 					ConsumeRecordModel consumeModel = new ConsumeRecordModel();
 					consumeModel.set("user_id", user_id);
 					consumeModel.set("money", coupon_money);
 					consumeModel.set("address", "online");
 					consumeModel.set("status", Const.OPTION_SUCCESS);
 					consumeModel.set("duration", "none");
-					consumeModel.set("detail", "ÓÅ»ÝÈ¯ÉÌµêÏßÉÏÏû·Ñ");
+					consumeModel.set("detail", "ä¼˜æƒ åˆ¸è´­ä¹°çº¿ä¸Šæ¶ˆè´¹");
 					consumeModel.set("create_time", System.currentTimeMillis()/1000+"");
 					consumeModel.set("remark", "none");
 					consumeModel.set("del", "normal");
@@ -68,20 +67,20 @@ public class CouponUserController extends DefaultController<CouponUserModel>{
 				}else{
 					JSONObject js = new JSONObject();
 					js.put(Const.KEY_RES_CODE, Const.KEY_RES_CODE_201);
-					js.put(Const.KEY_RES_MESSAGE, "Óà¶î²»×ã0");
+					js.put(Const.KEY_RES_MESSAGE, "ï¿½ï¿½î²»ï¿½ï¿½0");
 					renderJson(js.toJSONString());
 				}
 			}else{
 				JSONObject js = new JSONObject();
 				js.put(Const.KEY_RES_CODE, Const.KEY_RES_CODE_201);
-				js.put(Const.KEY_RES_MESSAGE, "Óà¶î²»×ã1");
+				js.put(Const.KEY_RES_MESSAGE, "ï¿½ï¿½î²»ï¿½ï¿½1");
 				renderJson(js.toJSONString());
 			}
 			
 		}else{
 			JSONObject js = new JSONObject();
 			js.put(Const.KEY_RES_CODE, Const.KEY_RES_CODE_201);
-			js.put(Const.KEY_RES_MESSAGE, "Óà¶î²»×ã2");
+			js.put(Const.KEY_RES_MESSAGE, "ï¿½ï¿½î²»ï¿½ï¿½2");
 			renderJson(js.toJSONString());
 		}
 		
@@ -89,7 +88,7 @@ public class CouponUserController extends DefaultController<CouponUserModel>{
 	
 	public void getAllEntityByUserId() {
 		setData();
-		String sql = "select a.* from coupon_base a,coupon_user b where a.id = b.coupon_id and b.user_id = '"+getPara(Const.KEY_DB_USER_ID)+"' and b.del != 'delete' and a.del != 'delete'";
+		String sql = "select a.*,b.id as coupon_user_id from coupon_base a,coupon_user b where a.id = b.coupon_id and b.user_id = '"+getPara(Const.KEY_DB_USER_ID)+"' and b.del != 'delete' and a.del != 'delete'";
 		Log.i(sql);
 		List<CouponBaseModel> list = CouponBaseModel.dao.find(sql);
 		JSONObject js = new JSONObject();

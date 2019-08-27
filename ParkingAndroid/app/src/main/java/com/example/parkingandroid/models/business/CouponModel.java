@@ -14,6 +14,9 @@ public class CouponModel {
     private String coupon_name;
     private String coupon_publisher;
 
+
+    private String coupon_user_id;
+
     public String getDeduction() {
         return deduction;
     }
@@ -110,6 +113,14 @@ public class CouponModel {
         this.coupon_publisher = coupon_publisher;
     }
 
+    public String getCoupon_user_id() {
+        return coupon_user_id;
+    }
+
+    public void setCoupon_user_id(String coupon_user_id) {
+        this.coupon_user_id = coupon_user_id;
+    }
+
     @Override
     public String toString() {
         return "CouponModel{" +
@@ -125,6 +136,7 @@ public class CouponModel {
                 ", type='" + type + '\'' +
                 ", coupon_name='" + coupon_name + '\'' +
                 ", coupon_publisher='" + coupon_publisher + '\'' +
+                ", coupon_user_id='" + coupon_user_id + '\'' +
                 '}';
     }
 }

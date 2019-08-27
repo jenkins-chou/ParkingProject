@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.example.parkingandroid.R;
 import com.github.library.BaseRecyclerAdapter;
 import com.github.library.BaseViewHolder;
+import com.github.library.listener.OnRecyclerItemClickListener;
 import com.scwang.smartrefresh.header.FlyRefreshHeader;
 import com.scwang.smartrefresh.header.MaterialHeader;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -77,6 +78,13 @@ public abstract class BaseListActivity<T> extends BaseActivity{
         recyclerView.setAdapter(baseRecyclerAdapter);
 
         baseRecyclerAdapter.openLoadAnimation(false);
+
+        baseRecyclerAdapter.setOnRecyclerItemClickListener(new OnRecyclerItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                onBaseItemClick(view,position);
+            }
+        });
         smartRefreshLayout.setEnableRefresh(pullRefreshEnable);
         smartRefreshLayout.setEnableLoadMore(loadRefreshEnable);
         smartRefreshLayout.setRefreshHeader(new MaterialHeader(context));
@@ -98,6 +106,14 @@ public abstract class BaseListActivity<T> extends BaseActivity{
 
     public void setTitle(String t){
         title.setText(t);
+    }
+
+    public void onBaseItemClick(View view, int position){
+
+    }
+
+    public List<T> getSources() {
+        return sources;
     }
 
     /**

@@ -122,4 +122,11 @@ public interface ApiService {
     @FormUrlEncoded
     @POST("parking_lot/addAppointment")
     Observable<ResultModel> addAppointment(@FieldMap Map<String, String> body);
+
+    //获取个人的预约停车场列表
+    @FormUrlEncoded
+    @POST("parking_lot/getAllAppointmentByUserID")
+    Observable<ResultModel> getAllAppointmentByUserID(@FieldMap Map<String, String> body);
+
+
 }

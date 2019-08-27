@@ -10,8 +10,8 @@ import com.demo.utils.CheckUtils;
 import com.demo.utils.Const;
 
 public class AccountController extends DefaultController<AccountModel>{
-	public static final String DB_TABLE = "account";//ÐÞ¸ÄÏî 1£ºÊý¾Ý¿â±íÃû³Æ
-	public static final String HTML_KEY = "account";//ÐÞ¸ÄÏî2£ºÒ³Ãæ¹Ø¼ü×Ö
+	public static final String DB_TABLE = "account";//ï¿½Þ¸ï¿½ï¿½ï¿½ 1ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	public static final String HTML_KEY = "account";//ï¿½Þ¸ï¿½ï¿½ï¿½2ï¿½ï¿½Ò³ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½
 	
 	@Override
 	public void setData() {

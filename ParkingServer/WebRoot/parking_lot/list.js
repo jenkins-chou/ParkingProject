@@ -178,6 +178,7 @@ var loadList = function(first) {layui.config({base : "js/"}).use([ 'form', 'laye
 								index = layer.open({
 									title : "添加",
 									type : 2,
+									scrollbar : true,
 									area : [ '800px', '800px' ],
 									content : ctxPath + "/"+html_key+"/showHtmlAdd"
 								});

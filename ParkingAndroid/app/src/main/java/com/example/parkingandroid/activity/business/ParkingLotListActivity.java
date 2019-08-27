@@ -83,6 +83,11 @@ public class ParkingLotListActivity extends BaseListActivity<ParkingLotModel> {
             }
 
             @Override
+            public void getAllAppointmentByUserID(boolean isSuccess, Object object) {
+
+            }
+
+            @Override
             public void failed(Object object) {
 
             }

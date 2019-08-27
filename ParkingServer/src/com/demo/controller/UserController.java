@@ -20,8 +20,8 @@ import com.jfinal.upload.UploadFile;
 
 public class UserController extends DefaultController<UserModel>{
 	
-	public static final String DB_TABLE = "user_base";//ÐÞ¸ÄÏî 1£ºÊý¾Ý¿â±íÃû³Æ
-	public static final String HTML_KEY = "user";//ÐÞ¸ÄÏî2£ºÒ³Ãæ¹Ø¼ü×Ö
+	public static final String DB_TABLE = "user_base";//ï¿½Þ¸ï¿½ï¿½ï¿½ 1ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	public static final String HTML_KEY = "user";//ï¿½Þ¸ï¿½ï¿½ï¿½2ï¿½ï¿½Ò³ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½
 	
 	@Override
 	public void setData() {

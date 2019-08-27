@@ -119,6 +119,16 @@
         android:layout_marginLeft="20dp"
         android:layout_width="match_parent"
         android:layout_height="40dp" />
+    <TextView
+        android:id="@+id/select_coupon"
+        android:text="选择优惠券"
+        android:padding="5dp"
+        android:background="@color/white"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <Button
         android:id="@+id/btn"
